@@ -2,7 +2,11 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#146ef5" />
+  <meta name="description" content="현장 위험 신고부터 조치·재점검까지 관리하는 건설안전 플랫폼" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon.svg" />
   <title>SAFEBUILD | 건설현장 안전 플랫폼</title>
   <!-- GitHub Pages deployment trigger: 2026-09-14 -->
   <link rel="stylesheet" href="style.css" />
@@ -13,69 +17,16 @@
     <div class="site-select">🏗️ 서울 A현장 <span>⌄</span></div>
     <div class="user">안전관리자 <span class="avatar">백</span></div>
   </header>
-
   <main>
-    <section class="hero">
-      <div><p class="eyebrow">TODAY · 2026.09.14</p><h1>현장의 위험을 발견하고,<br><em>사고 전에 해결합니다.</em></h1><p>위험 신고 → AI 위험도 평가 → 조치 지시 → 재점검까지 한 곳에서 관리하세요.</p></div>
-      <button class="primary" onclick="openModal('report')">+ 위험요인 신고</button>
-    </section>
-
-    <section class="stats">
-      <article><span>오늘 위험 신고</span><b id="reportCount">12</b><small class="up">▲ 3건 증가</small></article>
-      <article><span>미조치 위험</span><b class="danger" id="openCount">4</b><small>즉시 조치 필요 2건</small></article>
-      <article><span>안전점검 이행률</span><b>94%</b><small class="up">▲ 6%p</small></article>
-      <article><span>무재해 연속일</span><b>127일</b><small>목표 180일</small></article>
-    </section>
-
-    <section class="grid">
-      <div class="card wide">
-        <div class="card-head"><div><h2>현장 위험도 맵</h2><p>구역별 실시간 위험 수준</p></div><span class="pill red">● 고위험 2</span></div>
-        <div class="site-map">
-          <div class="zone zone-a high" onclick="zoneInfo('A동 골조','고위험 · 개구부 추락 위험')"><strong>A동</strong><small>골조</small><i>!</i></div>
-          <div class="zone zone-b safe"><strong>B동</strong><small>토공</small><i>✓</i></div>
-          <div class="zone zone-c warn"><strong>C동</strong><small>철골</small><i>!</i></div>
-          <div class="zone zone-d safe"><strong>D동</strong><small>마감</small><i>✓</i></div>
-          <div class="zone zone-e high"><strong>가설도로</strong><small>중장비</small><i>!</i></div>
-          <div class="legend"><span>낮음</span><span>주의</span><span>고위험</span></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><div><h2>긴급 조치</h2><p>즉시 대응이 필요한 항목</p></div></div>
-        <div class="alert-item"><span class="icon red-bg">!</span><div><strong>A동 5층 개구부</strong><small>추락방지 난간 미설치 · 8분 전</small></div><button onclick="resolve(this)">조치</button></div>
-        <div class="alert-item"><span class="icon orange-bg">⚠</span><div><strong>가설도로 굴착부</strong><small>중장비 접근 위험 · 21분 전</small></div><button onclick="resolve(this)">조치</button></div>
-      </div>
-    </section>
-
-    <section class="grid lower">
-      <div class="card">
-        <div class="card-head"><div><h2>최근 위험 신고</h2><p>근로자가 등록한 현장 위험</p></div><button class="text-btn" onclick="openModal('report')">전체보기 →</button></div>
-        <div id="reports" class="report-list">
-          <div class="report"><span class="dot red"></span><div><strong>개구부 안전난간 미설치</strong><small>A동 5층 · 김○○ · 08:42</small></div><b>고위험</b></div>
-          <div class="report"><span class="dot orange"></span><div><strong>자재 적치로 통로 협소</strong><small>C동 2층 · 이○○ · 08:17</small></div><b>주의</b></div>
-          <div class="report"><span class="dot yellow"></span><div><strong>안전표지 훼손</strong><small>B동 외부 · 박○○ · 07:55</small></div><b>낮음</b></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><div><h2>오늘의 안전점검</h2><p>필수 체크리스트</p></div><span class="score">14 / 15</span></div>
-        <div class="progress"><span></span></div>
-        <label class="check"><input type="checkbox" checked onchange="updateChecks()"> 추락방호시설 점검</label>
-        <label class="check"><input type="checkbox" checked onchange="updateChecks()"> 중장비 작업반경 통제</label>
-        <label class="check"><input type="checkbox" checked onchange="updateChecks()"> 개인보호구 착용상태</label>
-        <label class="check"><input type="checkbox" onchange="updateChecks()"> 화재·용접 작업 관리</label>
-        <button class="outline" onclick="alert('점검표가 현장 담당자에게 전송되었습니다.')">점검 완료 처리</button>
-      </div>
-    </section>
-
-    <section class="workflow card">
-      <div><p class="eyebrow">SAFETY WORKFLOW</p><h2>신고에서 해결까지, 끊김 없이</h2></div>
-      <div class="steps"><div><b>01</b><strong>위험 발견</strong><small>사진·위치와 함께 신고</small></div><span>→</span><div><b>02</b><strong>위험도 평가</strong><small>위험도 자동 분류</small></div><span>→</span><div><b>03</b><strong>조치 지시</strong><small>담당자에게 즉시 전달</small></div><span>→</span><div><b>04</b><strong>재점검</strong><small>조치 완료까지 추적</small></div></div>
-    </section>
+    <section class="hero"><div><p class="eyebrow">TODAY · 2026.09.14</p><h1>현장의 위험을 발견하고,<br><em>사고 전에 해결합니다.</em></h1><p>위험 신고 → AI 위험도 평가 → 조치 지시 → 재점검까지 한 곳에서 관리하세요.</p></div><button class="primary" onclick="openModal()">+ 위험요인 신고</button></section>
+    <section class="stats"><article><span>오늘 위험 신고</span><b id="reportCount">12</b><small class="up">▲ 3건 증가</small></article><article><span>미조치 위험</span><b class="danger" id="openCount">4</b><small>즉시 조치 필요 2건</small></article><article><span>안전점검 이행률</span><b>94%</b><small class="up">▲ 6%p</small></article><article><span>무재해 연속일</span><b>127일</b><small>목표 180일</small></article></section>
+    <section class="grid"><div class="card wide"><div class="card-head"><div><h2>현장 위험도 맵</h2><p>구역별 실시간 위험 수준</p></div><span class="pill red">● 고위험 2</span></div><div class="site-map"><div class="zone zone-a high" onclick="zoneInfo('A동 골조','고위험 · 개구부 추락 위험')"><strong>A동</strong><small>골조</small><i>!</i></div><div class="zone zone-b safe"><strong>B동</strong><small>토공</small><i>✓</i></div><div class="zone zone-c warn"><strong>C동</strong><small>철골</small><i>!</i></div><div class="zone zone-d safe"><strong>D동</strong><small>마감</small><i>✓</i></div><div class="zone zone-e high"><strong>가설도로</strong><small>중장비</small><i>!</i></div><div class="legend"><span>낮음</span><span>주의</span><span>고위험</span></div></div></div><div class="card"><div class="card-head"><div><h2>긴급 조치</h2><p>즉시 대응이 필요한 항목</p></div></div><div class="alert-item"><span class="icon red-bg">!</span><div><strong>A동 5층 개구부</strong><small>추락방지 난간 미설치 · 8분 전</small></div><button onclick="resolve(this)">조치</button></div><div class="alert-item"><span class="icon orange-bg">⚠</span><div><strong>가설도로 굴착부</strong><small>중장비 접근 위험 · 21분 전</small></div><button onclick="resolve(this)">조치</button></div></div></section>
+    <section class="grid lower"><div class="card"><div class="card-head"><div><h2>최근 위험 신고</h2><p>근로자가 등록한 현장 위험</p></div><button class="text-btn" onclick="openModal()">전체보기 →</button></div><div id="reports" class="report-list"><div class="report"><span class="dot red"></span><div><strong>개구부 안전난간 미설치</strong><small>A동 5층 · 김○○ · 08:42</small></div><b>고위험</b></div><div class="report"><span class="dot orange"></span><div><strong>자재 적치로 통로 협소</strong><small>C동 2층 · 이○○ · 08:17</small></div><b>주의</b></div><div class="report"><span class="dot yellow"></span><div><strong>안전표지 훼손</strong><small>B동 외부 · 박○○ · 07:55</small></div><b>낮음</b></div></div></div><div class="card"><div class="card-head"><div><h2>오늘의 안전점검</h2><p>필수 체크리스트</p></div><span class="score">14 / 15</span></div><div class="progress"><span></span></div><label class="check"><input type="checkbox" checked onchange="updateChecks()"> 추락방호시설 점검</label><label class="check"><input type="checkbox" checked onchange="updateChecks()"> 중장비 작업반경 통제</label><label class="check"><input type="checkbox" checked onchange="updateChecks()"> 개인보호구 착용상태</label><label class="check"><input type="checkbox" onchange="updateChecks()"> 화재·용접 작업 관리</label><button class="outline" onclick="completeInspection()">점검 완료 처리</button></div></section>
+    <section class="workflow card"><div><p class="eyebrow">SAFETY WORKFLOW</p><h2>신고에서 해결까지, 끊김 없이</h2></div><div class="steps"><div><b>01</b><strong>위험 발견</strong><small>사진·위치와 함께 신고</small></div><span>→</span><div><b>02</b><strong>위험도 평가</strong><small>위험도 자동 분류</small></div><span>→</span><div><b>03</b><strong>조치 지시</strong><small>담당자에게 즉시 전달</small></div><span>→</span><div><b>04</b><strong>재점검</strong><small>조치 완료까지 추적</small></div></div></section>
   </main>
-
   <div id="modal" class="modal hidden"><div class="modal-box"><button class="close" onclick="closeModal()">×</button><h2>위험요인 신고</h2><p>현장에서 발견한 위험요인을 등록하세요.</p><form id="reportForm"><label>위험 유형<select id="type"><option>추락</option><option>낙하·비래</option><option>중장비 충돌</option><option>붕괴·전도</option><option>화재·폭발</option><option>기타</option></select></label><label>발생 위치<input id="location" placeholder="예: A동 5층 동측 개구부" required></label><label>위험 내용<textarea id="detail" placeholder="어떤 위험이 있는지 간단히 적어주세요." required></textarea></label><label>위험도<select id="level"><option>고위험</option><option selected>주의</option><option>낮음</option></select></label><button class="primary full" type="submit">신고 등록하기</button></form></div></div>
   <div id="toast" class="toast">신고가 등록되었습니다.</div>
   <script src="app.js"></script>
+  <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(function(){});}</script>
 </body>
 </html>
