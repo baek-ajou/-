@@ -90,5 +90,37 @@ document.querySelectorAll(".floor").forEach((b,i)=>b.onclick=()=>{document.query
 renderPeople();
 // 3D simulation hook
 const simCanvas=document.getElementById('sim3d');
+
+// 3D movement animation
+let simOn=true,simFrame=0;
+function animate3D(){
+ const cv=document.getElementById('sim3d'),x=cv&&cv.getContext('2d'); if(!x)return;
+ const w=cv.width,h=cv.height;x.clearRect(0,0,w,h);
+ x.fillStyle='#e9f4fb';x.fillRect(0,0,w,h);
+ const P=(a,b,z)=>({x:w/2+(a-b)*.8,y:245+(a+b)*.32-z*.7});
+ function box(a,b,c,d,e,f,col){let p=P(a,b,0),q=P(a+d,b,0),r=P(a,b+e,0),s=P(a,b,f),t=P(a+d,b,f),u=P(a,b+e,f);
+  x.fillStyle=col;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.lineTo(t.x,t.y);x.lineTo(s.x,s.y);x.fill();x.strokeStyle='#a8bfd1';x.stroke();
+  x.fillStyle='#d7e5ef';x.beginPath();x.moveTo(p.x,p.y);x.lineTo(r.x,r.y);x.lineTo(u.x,u.y);x.lineTo(s.x,s.y);x.fill();x.stroke();
+  x.fillStyle=col;x.beginPath();x.moveTo(s.x,s.y);x.lineTo(t.x,t.y);x.lineTo(P(a+d,b+e,f).x,P(a+d,b+e,f).y);x.lineTo(u.x,u.y);x.fill();x.stroke()
+ }
+ [[0,0],[50,0],[100,0],[0,38],[50,38],[100,38]].forEach((v,i)=>box(v[0],v[1],0,42,30,35,i===5&&!optimized?'#ffdede':'#edf6fb'));
+ box(48,33,0,46,4,7,optimized?'#9be3bd':'#f4c76b');box(148,20,0,12,42,12,optimized?'#9be3bd':'#f3a0a0');
+ x.fillStyle='#31556f';x.font='bold 13px sans-serif';x.fillText('2F BIM SPACE',18,25);
+ for(let i=0;i<30;i++){let p=(i/30+simFrame*.00035*(optimized?1.4:1))%1;let a,b;
+  if(optimized){if(i%2){a=20+130*p;b=48}else{a=45+100*p;b=14+Math.sin(i+p*8)*7}}else{a=35+125*p;b=31+Math.sin(i+p*9)*3}
+  let q=P(a,b,7);x.beginPath();x.arc(q.x,q.y,4,0,7);x.fillStyle=i%7===0?'#ef4444':'#1477df';x.fill()
+ }
+ if(simOn){simFrame++;requestAnimationFrame(animate3D)}
+}
+animate3D();
+const simButton=document.getElementById('playSim');
+if(simButton)simButton.onclick=()=>{simOn=!simOn;simButton.textContent=simOn?'⏸ 일시정지':'▶ 시뮬레이션 실행';if(simOn)animate3D()};
+function refreshSimLabel(){const a=document.getElementById('simModeText'),b=document.getElementById('simBadge'),h=document.getElementById('simHint');if(a)a.textContent=optimized?'AI 최적화 · 서쪽계단으로 동선 분산':'기존 동선 · 중앙계단 집중';if(b){b.textContent=optimized?'AI 최적화 후':'AI 최적화 전';b.style.color=optimized?'#168a58':'#dc3f3f'}if(h)h.textContent=optimized?'학생 이동이 중앙계단에서 서쪽계단으로 분산됩니다.':'AI 최적화를 누르면 학생들이 서쪽계단으로 분산됩니다.'}
+const originalSetMode=setMode;setMode=function(v){originalSetMode(v);refreshSimLabel()};
+refreshSimLabel();
+// BIM file import UI
+const dz=document.getElementById('dropZone'),fi=document.getElementById('bimFile');
+function importBim(file){if(!file)return;document.getElementById('fileName').textContent=file.name;document.getElementById('modelState').textContent='Import 완료';document.getElementById('fileStatus').textContent='BIM 파일 정보가 시뮬레이션 모델에 연결되었습니다.';if(file.name.toLowerCase().endsWith('.json')){let rd=new FileReader();rd.onload=()=>{try{let j=JSON.parse(rd.result);document.getElementById('spaceCount').textContent=j.spaces||j.rooms||24;document.getElementById('levelCount').textContent=j.levels||5}catch(e){}};rd.readAsText(file)}}
+if(fi)fi.onchange=e=>importBim(e.target.files[0]);if(dz){dz.onclick=()=>fi&&fi.click();dz.ondragover=e=>e.preventDefault();dz.ondrop=e=>{e.preventDefault();importBim(e.dataTransfer.files[0])}}
 </script>
 </body></html>
