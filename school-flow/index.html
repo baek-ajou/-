@@ -1,191 +1,61 @@
 <!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Smart School Flow | AI + BIM</title>
 <style>
-:root{--blue:#1976e8;--navy:#12355b;--bg:#f4f8fc;--line:#dbe7f1;--muted:#71839a;--red:#ef4444;--yellow:#f4b740;--green:#20a66a}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#edf6ff,#f9fcff);font-family:Inter,Pretendard,"Noto Sans KR",Arial,sans-serif;color:#17324d}.app{max-width:1550px;margin:16px auto;background:#fff;border:1px solid #d9e6f2;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px #6c8eaa22}.header{height:78px;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,#eaf5ff,#fff)}.brand{display:flex;align-items:center;gap:12px}.brandIcon{width:43px;height:43px;border:2px solid #2381ed;border-radius:10px;display:grid;place-items:center;color:#2381ed;font-size:23px}.brand h1{font-size:23px;margin:0;color:#123c66}.brand p{margin:3px 0 0;color:#44739e;font-size:12px}.slogan{color:#4a81b1;font-weight:700;font-style:italic}.body{display:grid;grid-template-columns:170px minmax(500px,1fr) 340px;min-height:900px}.side{border-right:1px solid var(--line);padding:15px 9px;background:#fbfdff}.nav{border:0;background:none;width:100%;padding:11px 12px;text-align:left;border-radius:8px;color:#55728f;cursor:pointer;font-weight:650;margin-bottom:3px}.nav.active{background:#e7f3ff;color:#1470db}.schoolCard{margin:28px 6px 0;border-top:1px solid var(--line);padding-top:16px}.schoolPic{height:88px;border-radius:9px;background:linear-gradient(135deg,#b8d8ee,#e9f5ff);display:grid;place-items:center;font-size:40px}.schoolName{font-weight:800;margin-top:9px}.facts{font-size:11px;line-height:1.9;color:#71839a}.center{padding:16px;background:#f7fbff}.titleRow,.toolbar,.rightHead,.simHead{display:flex;justify-content:space-between;align-items:center}.titleRow{margin-bottom:9px}.titleRow h2{margin:0;font-size:17px}.floors{display:flex;gap:4px}.floor{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;color:#5f7690;cursor:pointer;font-size:11px}.floor.active{background:var(--blue);color:#fff;border-color:var(--blue)}.bimBar{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:9px}.bimTop{display:flex;align-items:center;justify-content:space-between}.bimTop b{font-size:12px}.bimTop small{display:block;color:#8195aa;font-size:9px;margin-top:2px}.upload{background:var(--blue);color:#fff;border-radius:7px;padding:7px 10px;font-size:10px;font-weight:800;cursor:pointer}.upload input{display:none}.bimMeta{display:flex;gap:14px;margin-top:7px;font-size:9px;color:#7a8ea3}.bimMeta b{color:#1d4f7d}.toolbar{margin:7px 0}.live{display:inline-flex;gap:5px;align-items:center;font-size:9px;color:var(--green);font-weight:800}.live i{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 1.2s infinite}@keyframes pulse{50%{opacity:.3}}.toggle{background:#e8f0f8;padding:3px;border-radius:8px;display:flex;gap:2px}.toggle button{border:0;background:none;padding:6px 10px;border-radius:6px;cursor:pointer;color:#61778d;font-size:10px}.toggle button.active{background:#fff;box-shadow:0 2px 6px #7592ad33;color:#176fd1;font-weight:800}.viewer{position:relative;background:linear-gradient(#d9ebf8,#f7fbff);border:1px solid var(--line);border-radius:11px;overflow:hidden;height:535px}.viewer canvas{display:block;width:100%;height:100%;position:relative;z-index:1}.bimFallback{position:absolute;inset:0;z-index:0}.bimFallback svg{display:block;width:100%;height:100%}.simOverlay{position:absolute;right:10px;bottom:10px;background:#ffffffdd;border:1px solid #d7e4ee;border-radius:8px;padding:6px 8px;font-size:9px;font-weight:800;display:flex;gap:9px;align-items:center}.simLive{color:var(--green)}.simLive i{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:4px;animation:pulse 1s infinite}.videoControls{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;padding:8px 10px}.videoControls button{border:1px solid var(--line);background:#f8fbfe;color:#46647e;border-radius:7px;padding:6px 9px;font-size:9px;font-weight:800;cursor:pointer;white-space:nowrap}.videoControls .playBtn{background:var(--blue);border-color:var(--blue);color:#fff}.timeline{position:relative;flex:1;min-width:80px}.timeline input{width:100%;margin:0;position:relative;z-index:2;accent-color:var(--blue)}.progress{position:absolute;left:0;top:50%;height:3px;background:var(--blue);transform:translateY(-50%);pointer-events:none;width:0}.videoControls #simStatus{font-size:9px;color:#71839a;white-space:nowrap}@media(max-width:760px){.videoControls{flex-wrap:wrap}.timeline{order:3;flex-basis:100%}.videoControls #simStatus{display:none}}.viewerBadge{position:absolute;left:10px;top:10px;background:#ffffffdd;border-radius:8px;padding:7px 9px;font-size:10px;font-weight:800}.viewerHint{position:absolute;right:10px;top:10px;background:#ffffffcc;border-radius:8px;padding:6px 8px;font-size:9px;color:#5d7690}.viewerBottom{position:absolute;left:10px;bottom:10px;display:flex;gap:6px}.chip{background:#ffffffdd;border:1px solid #d7e4ee;border-radius:7px;padding:5px 7px;font-size:9px}.legend{display:flex;gap:14px;font-size:9px;color:#71839a;padding:7px 2px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px}.bottomGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:9px;margin-top:9px}.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px}.cardTitle{font-weight:800;font-size:11px;margin-bottom:8px}.compare{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center;gap:6px}.mini{background:#f6faff;border:1px solid var(--line);border-radius:7px;padding:6px;font-size:9px}.arrow{font-size:18px;color:var(--blue);text-align:center}.effects{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.effect{background:#f6faff;border-radius:7px;padding:8px}.effect b{display:block;color:var(--blue);font-size:16px}.effect small{font-size:9px;color:#71839a}.right{border-left:1px solid var(--line);padding:15px;background:#fff}.right h3{margin:0;font-size:14px}.time{font-size:9px;color:#9aaabd}.gauge{margin:12px 0;border-bottom:1px solid var(--line);padding-bottom:12px;display:flex;gap:13px;align-items:center}.circle{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--red) 0 62%,#e7edf3 62%);display:grid;place-items:center;position:relative}.circle:after{content:"";position:absolute;width:82px;height:82px;border-radius:50%;background:#fff}.circleText{position:relative;z-index:1;text-align:center}.circleText b{display:block;font-size:26px}.circleText span{font-size:9px;color:#758ba0}.top3{flex:1}.top3 h4{margin:0 0 6px;font-size:11px}.top3 div{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #eef3f7;font-size:10px}.red{color:var(--red);font-weight:800}.chart{height:125px;border-bottom:1px solid var(--line);margin-top:7px}.chart svg{width:100%;height:100%}.insight{margin-top:11px;background:#f5faff;border-radius:8px;padding:9px;font-size:10px;line-height:1.6}.insight b{color:#196fd0}.recommend{margin-top:10px}.rec{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #eef3f7;font-size:10px;line-height:1.45}.num{min-width:21px;height:21px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800}.simRow{display:flex;align-items:center;gap:8px;font-size:10px;color:#71839a;margin-top:7px}.simRow input{accent-color:var(--blue);flex:1}.simRow strong{color:#1d4f7d}.status{margin-top:7px;font-size:9px;color:#70859a}.status.ok{color:var(--green)}@media(max-width:1100px){.body{grid-template-columns:150px 1fr}.right{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px}.rightHead,.recommend{grid-column:1/-1}}@media(max-width:760px){.body{display:block}.side{display:flex;overflow:auto}.nav{min-width:115px}.schoolCard{display:none}.bottomGrid{grid-template-columns:1fr}.slogan{display:none}.right{display:block}.header{height:auto}.floors{overflow:auto}.viewer{height:420px}}
-</style>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.179.1/examples/jsm/","web-ifc":"https://cdn.jsdelivr.net/npm/web-ifc@0.0.77/web-ifc-api.js"}}</script>
-</head>
-<body>
-<div class="app">
-<header class="header"><div class="brand"><div class="brandIcon">🏫</div><div><h1>Smart School Flow</h1><p>AI + BIM 기반 학교 공간 혼잡도 분석 및 최적화 서비스</p></div></div><div class="slogan">더 스마트한 동선, 더 쾌적한 학교</div></header>
-<div class="body">
-<aside class="side">
+*{box-sizing:border-box}body{margin:0;background:#eef6fd;font-family:Arial,"Noto Sans KR",sans-serif;color:#17324d}.app{max-width:1500px;margin:12px auto;background:#fff;border:1px solid #d7e5f0;border-radius:14px;overflow:hidden;box-shadow:0 15px 50px #6c8eaa22}.head{height:76px;padding:12px 22px;background:linear-gradient(90deg,#e9f5ff,#fff);display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:11px;align-items:center}.ico{width:43px;height:43px;border:2px solid #1976e8;border-radius:10px;display:grid;place-items:center;font-size:22px}.head h1{font-size:22px;margin:0}.head p{font-size:11px;color:#5680a4;margin:4px 0}.slogan{color:#4a81b1;font-weight:bold;font-style:italic}.layout{display:grid;grid-template-columns:165px 1fr 330px;min-height:880px}.side{background:#fbfdff;border-right:1px solid #dbe7f1;padding:14px 9px}.nav{display:block;width:100%;border:0;background:none;text-align:left;padding:11px;border-radius:8px;color:#5c7690;font-weight:bold;margin:3px 0}.nav.active{background:#e6f3ff;color:#1976e8}.school{margin:28px 5px 0;border-top:1px solid #dbe7f1;padding-top:15px}.pic{height:85px;border-radius:9px;background:#dff0fb;display:grid;place-items:center;font-size:40px}.school b{display:block;margin-top:8px}.facts{font-size:11px;color:#71869a;line-height:1.8}.main{padding:15px;background:#f7fbff}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.title h2{font-size:17px;margin:0}.floors button{border:1px solid #dbe7f1;background:#fff;border-radius:7px;padding:6px 10px;font-size:11px}.floors .on{background:#1976e8;color:#fff}.bimbar{background:#fff;border:1px solid #dbe7f1;border-radius:10px;padding:10px 12px;margin-bottom:9px;font-size:11px}.bimbar small{display:block;color:#8497a9;margin-top:3px}.meta{font-size:9px;color:#71869a;margin-top:7px}.meta b{color:#24567e}.toolbar{display:flex;justify-content:space-between;align-items:center;margin:7px 0}.live{font-size:9px;color:#20a66a;font-weight:bold}.toggle{background:#e8f0f7;border-radius:8px;padding:3px}.toggle button{border:0;background:none;border-radius:6px;padding:6px 11px;font-size:10px}.toggle .on{background:#fff;color:#1976e8;font-weight:bold;box-shadow:0 2px 5px #7890a522}.viewer{height:535px;border:1px solid #dbe7f1;border-radius:11px;overflow:hidden;position:relative;background:linear-gradient(#d9ecfa,#f8fcff)}svg{display:block;width:100%;height:100%}.badge,.hint{position:absolute;top:10px;background:#ffffffdf;border-radius:7px;padding:7px 9px;font-size:10px;font-weight:bold}.badge{left:10px}.hint{right:10px;color:#667e93;font-weight:normal}.flow{position:absolute;right:10px;bottom:10px;background:#ffffffdf;border:1px solid #dbe7f1;border-radius:8px;padding:6px 9px;font-size:9px;font-weight:bold}.green{color:#20a66a}.controls{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #dbe7f1;border-top:0;padding:8px;border-radius:0 0 10px 10px}.controls button{border:1px solid #dbe7f1;background:#f7fbff;border-radius:7px;padding:6px 9px;font-size:9px;font-weight:bold}.controls .play{background:#1976e8;color:white}.controls input{flex:1;accent-color:#1976e8}.legend{font-size:9px;color:#71869a;padding:7px}.slider{display:flex;gap:8px;align-items:center;font-size:10px;color:#71869a}.slider input{flex:1;accent-color:#1976e8}.bottom{display:grid;grid-template-columns:1.2fr .8fr;gap:9px;margin-top:9px}.card{background:#fff;border:1px solid #dbe7f1;border-radius:10px;padding:11px}.ct{font-size:11px;font-weight:bold;margin-bottom:8px}.compare{display:grid;grid-template-columns:1fr 25px 1fr;gap:5px;align-items:center}.mini{background:#f5faff;border:1px solid #dbe7f1;border-radius:7px;padding:7px;font-size:9px}.arrow{font-size:18px;color:#1976e8}.effects{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.effect{background:#f5faff;border-radius:7px;padding:8px}.effect b{display:block;color:#1976e8;font-size:16px}.effect small{font-size:9px;color:#71869a}.right{border-left:1px solid #dbe7f1;padding:15px}.right h3{margin:0;font-size:14px}.rhead{display:flex;justify-content:space-between}.time{font-size:9px;color:#9aaabd}.gauge{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #dbe7f1}.circle{width:108px;height:108px;border-radius:50%;background:conic-gradient(#ef4444 0 62%,#e8eef3 62%);display:grid;place-items:center}.inner{width:80px;height:80px;border-radius:50%;background:white;display:grid;place-items:center;text-align:center}.inner b{font-size:25px}.inner small{font-size:8px;color:#71869a}.top{flex:1}.top h4{font-size:11px;margin:0 0 5px}.top div{display:flex;justify-content:space-between;font-size:10px;padding:5px 0;border-bottom:1px solid #eef3f7}.red{color:#ef4444;font-weight:bold}.chart{height:125px;border-bottom:1px solid #dbe7f1;margin-top:7px}.insight{margin-top:10px;background:#f5faff;border-radius:8px;padding:9px;font-size:10px;line-height:1.55}.insight b{color:#1976e8}.rec{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #eef3f7;font-size:10px}.num{min-width:21px;height:21px;border-radius:50%;background:#1976e8;color:#fff;display:grid;place-items:center;font-weight:bold}
+.people{animation:move 4s linear infinite}.people2{animation:move2 4s linear infinite}@keyframes move{0%{transform:translate(0,0)}25%{transform:translate(90px,18px)}50%{transform:translate(180px,-5px)}75%{transform:translate(275px,12px)}100%{transform:translate(360px,0)}}@keyframes move2{0%{transform:translate(0,0)}25%{transform:translate(80px,-18px)}50%{transform:translate(160px,8px)}75%{transform:translate(245px,-8px)}100%{transform:translate(330px,0)}}.aiPath{stroke:#20a66a;stroke-width:5;stroke-dasharray:12 10;fill:none;animation:dash 1s linear infinite}@keyframes dash{to{stroke-dashoffset:-22}}.oldPath{stroke:#ef4444;stroke-width:6;stroke-dasharray:9 8;fill:none;opacity:.75}.hot{animation:pulse 1.2s ease-in-out infinite;transform-origin:center}@keyframes pulse{50%{opacity:.35;transform:scale(1.15)}}@media(max-width:1100px){.layout{grid-template-columns:150px 1fr}.right{grid-column:1/-1;border-left:0;border-top:1px solid #dbe7f1}}@media(max-width:760px){.layout{display:block}.side{display:none}.right{display:block}.bottom{grid-template-columns:1fr}.slogan{display:none}.viewer{height:430px}}
+</style></head>
+<body><div class="app">
+<header class="head"><div class="brand"><div class="ico">🏫</div><div><h1>Smart School Flow</h1><p>AI + BIM 기반 학교 공간 혼잡도 분석 및 최적화 서비스</p></div></div><div class="slogan">더 스마트한 동선, 더 쾌적한 학교</div></header>
+<div class="layout"><aside class="side">
 <button class="nav active">⌂　홈</button><button class="nav">▣　건물 개요</button><button class="nav">▥　혼잡도 분석</button><button class="nav">♧　동선 시뮬레이션</button><button class="nav">♢　최적화 제안</button><button class="nav">⚙　설정</button>
-<div class="schoolCard"><div class="schoolPic">🏫</div><div class="schoolName">OO고등학교</div><div class="facts">규모　지상 5층<br>학생 수　1,200명<br>건축 연도　2010년</div></div>
-</aside>
-<main class="center">
-<div class="titleRow"><h2><span id="floorTitle">2층</span> 전체 현황 <small style="font-weight:500;color:#8195aa">(실시간 혼잡도)</small></h2><div class="floors"><button class="floor">1층</button><button class="floor active">2층</button><button class="floor">3층</button><button class="floor">4층</button><button class="floor">5층</button></div></div>
-<div class="bimBar"><div class="bimTop"><div><b>▦ 실제 BIM 데이터 불러오기</b><small>IFC / IFCZIP / GLB / GLTF / BIM JSON · 샘플 BIM 자동 제공</small></div><div style="display:flex;gap:6px;align-items:center"><a class="upload" href="sample-school-bim.json" target="_blank" style="text-decoration:none">샘플 BIM 보기</a><label class="upload">BIM 파일 선택<input id="bimFile" type="file" accept=".ifc,.ifczip,.glb,.gltf,.json"></label></div></div><div class="bimMeta"><span>상태 <b id="modelState">샘플 BIM 분석</b></span><span>공간 <b id="spaceCount">24</b></span><span>층수 <b id="levelCount">5</b></span><span>파일 <b id="fileName">sample-school-bim.json</b></span></div><div id="fileStatus" class="status ok">게시된 샘플 BIM 데이터를 자동 연결하고 있습니다. 3D 학교 모델과 AI 동선 분석을 바로 실행합니다.</div></div>
-<div class="toolbar"><div class="live"><i></i> LIVE AI ANALYSIS</div><div class="toggle"><button id="normalBtn" class="active">기존 동선</button><button id="optBtn">AI 최적화</button></div></div>
-<div class="viewer"><div id="bimFallback" class="bimFallback" aria-label="샘플 BIM 2층 시각화">
-<svg viewBox="0 0 900 535" role="img" aria-label="학교 2층 BIM 공간과 학생 이동 시각화">
-<defs>
- <linearGradient id="fbBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8ebf8"/><stop offset="1" stop-color="#f7fbff"/></linearGradient>
- <linearGradient id="fbFloor" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dcebf4"/></linearGradient>
-</defs>
-<rect width="900" height="535" fill="url(#fbBg)"/>
-<g transform="translate(95 75)">
- <polygon points="40,70 390,15 745,105 395,165" fill="#d3e3ed" stroke="#8aa9bf" stroke-width="2"/>
- <polygon points="40,70 395,165 395,390 40,295" fill="#edf5f9" stroke="#8aa9bf" stroke-width="2"/>
- <polygon points="395,165 745,105 745,330 395,390" fill="#e5f0f5" stroke="#8aa9bf" stroke-width="2"/>
- <!-- rooms -->
- <g fill="#f9fcfe" stroke="#9db7c8" stroke-width="2">
-  <polygon points="72,80 175,64 175,137 72,111"/>
-  <polygon points="188,61 291,45 291,118 188,136"/>
-  <polygon points="304,42 387,29 387,103 304,117"/>
-  <polygon points="72,131 175,157 175,230 72,199"/>
-  <polygon points="188,160 291,139 291,214 188,231"/>
-  <polygon points="304,125 387,111 387,188 304,211"/>
-  <polygon points="420,160 515,144 515,213 420,230"/>
-  <polygon points="530,141 625,125 625,195 530,212"/>
-  <polygon points="640,122 714,110 714,180 640,194"/>
-  <polygon points="420,240 515,222 515,292 420,309"/>
-  <polygon points="530,219 625,201 625,271 530,290"/>
-  <polygon points="640,201 714,188 714,258 640,271"/>
- </g>
- <!-- central corridor -->
- <polygon points="390,165 420,160 714,105 714,122 420,184 390,188" fill="#c8dbe7" opacity=".95"/>
- <polygon points="390,188 420,184 420,309 390,390" fill="#c3d7e3" opacity=".95"/>
- <!-- stairs -->
- <polygon points="695,184 742,176 742,244 695,258" fill="#f2a0a0" stroke="#d95c5c" stroke-width="3"/>
- <polygon points="45,202 92,214 92,284 45,270" fill="#bde8cf" stroke="#3aa66b" stroke-width="3"/>
- <!-- hotspot -->
- <ellipse cx="718" cy="214" rx="50" ry="25" fill="#ef4444" opacity=".18"/>
- <ellipse cx="718" cy="214" rx="27" ry="14" fill="#ef4444" opacity=".24"/>
- <!-- labels -->
- <g font-family="Arial,'Noto Sans KR',sans-serif" font-size="13" font-weight="700" fill="#45657d">
-  <text x="105" y="95">교실 A</text><text x="220" y="80">교실 B</text><text x="330" y="65">과학실</text>
-  <text x="105" y="180">교실 C</text><text x="220" y="183">교실 D</text><text x="330" y="165">복도</text>
-  <text x="555" y="180">교실 E</text><text x="655" y="162">교실 F</text>
-  <text x="700" y="210" fill="#c93636">중앙계단</text><text x="48" y="250" fill="#24875a">서쪽계단</text>
- </g>
- <!-- moving people visual -->
- <g fill="#1976e8">
-  <circle cx="220" cy="148" r="6"/><circle cx="248" cy="154" r="6"/><circle cx="278" cy="148" r="6"/>
-  <circle cx="430" cy="205" r="6"/><circle cx="470" cy="198" r="6"/><circle cx="510" cy="190" r="6"/>
-  <circle cx="555" cy="183" r="6"/><circle cx="610" cy="172" r="6"/>
- </g>
- <g fill="#ef4444">
-  <circle cx="668" cy="190" r="6"/><circle cx="684" cy="198" r="6"/><circle cx="700" cy="205" r="6"/><circle cx="718" cy="214" r="6"/>
- </g>
- <g fill="#fff" stroke="#7b9ab0">
-  <rect x="410" y="330" width="130" height="34" rx="8"/>
- </g>
- <text x="475" y="352" text-anchor="middle" font-family="Arial,'Noto Sans KR',sans-serif" font-size="13" font-weight="800" fill="#45657d">2F SAMPLE BIM</text>
+<div class="school"><div class="pic">🏫</div><b>OO고등학교</b><div class="facts">규모　지상 5층<br>학생 수　1,200명<br>건축 연도　2010년</div></div></aside>
+<main class="main"><div class="title"><h2><span id="floorTitle">2층</span> 전체 현황 <small style="font-weight:normal;color:#8195aa">(실시간 혼잡도)</small></h2><div class="floors"><button class="" data-floor="1">1층</button><button class="on" data-floor="2">2층</button><button class="" data-floor="3">3층</button><button class="" data-floor="4">4층</button><button class="" data-floor="5">5층</button></div></div>
+<div class="bimbar"><b>▦ SAMPLE BIM · 가상 학교 BIM 자동 연결</b><small>실제 IFC/GLB 파일 없이도 아래 BIM 공간에서 AI 동선 분석을 즉시 시각화합니다.</small><div class="meta">상태 <b>샘플 BIM 분석 완료</b>　 공간 <b>24</b>　 층수 <b>5</b>　 파일 <b>sample-school-bim.json</b></div></div>
+<div class="toolbar"><div class="live">● LIVE AI ANALYSIS</div><div class="toggle"><button id="old" class="on">기존 동선</button><button id="ai">AI 최적화</button></div></div>
+<div class="viewer"><svg viewBox="0 0 1000 535" preserveAspectRatio="none">
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d7ebf8"/><stop offset="1" stop-color="#f8fcff"/></linearGradient><linearGradient id="room" x2="1" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#dcecf5"/></linearGradient></defs>
+<rect width="1000" height="535" fill="url(#sky)"/>
+<g transform="translate(90 70)">
+<polygon points="60,65 440,5 820,105 440,170" fill="#cbdfea" stroke="#86a6ba" stroke-width="3"/>
+<polygon points="60,65 440,170 440,420 60,300" fill="#eef6fa" stroke="#86a6ba" stroke-width="3"/>
+<polygon points="440,170 820,105 820,350 440,420" fill="#e5f1f6" stroke="#86a6ba" stroke-width="3"/>
+<g fill="url(#room)" stroke="#9bb5c6" stroke-width="2">
+<polygon points="85,75 190,58 190,135 85,108"/><polygon points="205,55 310,38 310,116 205,135"/><polygon points="325,35 425,20 425,98 325,115"/>
+<polygon points="85,128 190,154 190,232 85,202"/><polygon points="205,158 310,132 310,212 205,235"/><polygon points="325,120 425,104 425,187 325,211"/>
+<polygon points="470,175 575,157 575,235 470,254"/><polygon points="590,154 695,136 695,214 590,233"/><polygon points="710,132 790,118 790,190 710,205"/>
+<polygon points="470,266 575,245 575,322 470,341"/><polygon points="590,241 695,220 695,298 590,319"/><polygon points="710,216 790,202 790,273 710,289"/>
 </g>
-</svg></div><canvas id="bimViewer"></canvas><div class="viewerBadge" id="viewerBadge">2F · SAMPLE BIM · 기존 동선</div><div class="viewerHint">마우스 드래그 회전 · 휠 확대/축소</div><div class="viewerBottom"><span class="chip">🏫 2F BIM SPACE</span><span class="chip">🔴 혼잡구간 표시</span><span class="chip">● 실시간 학생 이동</span></div><div class="simOverlay"><span class="simLive"><i></i> PEOPLE FLOW</span><span id="simClock">00:00 / 00:20</span></div></div>
-<div class="videoControls">
-<button id="simPlay" class="playBtn" type="button">❚❚ 일시정지</button><button id="simReset" type="button">↺ 처음부터</button>
-<div class="timeline"><input id="simTimeline" type="range" min="0" max="20" step="0.1" value="0" aria-label="동선 시뮬레이션 시간"><div id="simProgress" class="progress"></div></div>
-<span id="simStatus">자동 반복 재생</span>
-</div>
-<div class="legend"><span><i class="dot" style="background:#ef4444"></i>고혼잡</span><span><i class="dot" style="background:#f4b740"></i>중혼잡</span><span><i class="dot" style="background:#20a66a"></i>원활</span><span>● 학생 이동</span></div>
-<div class="simRow">시뮬레이션 학생 수 <input id="studentSlider" type="range" min="400" max="1600" value="1200"><strong id="studentCount">1,200명</strong></div>
-<div class="bottomGrid"><div class="card"><div class="cardTitle">♟ 기존 동선 → AI 최적화 동선</div><div class="compare"><div class="mini">중앙계단 집중<br>🔴 92% 혼잡</div><div class="arrow">→</div><div class="mini">서쪽계단 분산<br>🟢 55% 혼잡</div></div></div><div class="card"><div class="cardTitle">AI 최적화 효과</div><div class="effects"><div class="effect"><b id="effectCong">62%</b><small>혼잡도 감소</small></div><div class="effect"><b>+35%</b><small>서쪽계단 이용</small></div><div class="effect"><b>-28%</b><small>대기시간</small></div></div></div></div>
-</main>
-<aside class="right">
-<div class="rightHead"><h3>AI 혼잡도 분석</h3><span class="time">12:30~13:00 예측</span></div>
-<div class="gauge"><div class="circle" id="gauge"><div class="circleText"><b id="gaugeVal">62%</b><span>전체 혼잡도</span></div></div><div class="top3"><h4>TOP 3 혼잡 구역</h4><div><span>중앙계단</span><b class="red" id="topStair">92%</b></div><div><span>2F 중앙복도</span><b class="red">81%</b></div><div><span>1F 로비</span><b class="red">76%</b></div></div></div>
-<div class="chart"><svg viewBox="0 0 310 125"><g stroke="#e5edf4" stroke-width="1"><path d="M15 100H300M15 70H300M15 40H300M15 10H300"/></g><polyline fill="none" stroke="#ef4444" stroke-width="3" points="15,95 60,78 105,52 150,27 195,42 240,67 300,86"/><g fill="#71839a" font-size="8"><text x="15" y="118">08:00</text><text x="105" y="118">10:00</text><text x="195" y="118">12:00</text><text x="270" y="118">14:00</text></g></svg></div>
+<polygon points="425,170 470,162 790,108 790,126 470,188 425,196" fill="#c2d8e5"/>
+<polygon points="425,196 470,188 470,340 425,420" fill="#bdd4e1"/>
+<polygon points="742,185 810,173 810,258 742,273" fill="#f1a0a0" stroke="#d95353" stroke-width="4"/>
+<polygon points="55,207 122,225 122,304 55,283" fill="#bce8cf" stroke="#36a269" stroke-width="4"/>
+<ellipse class="hot" cx="775" cy="225" rx="58" ry="32" fill="#ef4444" opacity=".25"/><ellipse class="hot" cx="775" cy="225" rx="30" ry="17" fill="#ef4444" opacity=".35"/>
+<g font-family="Arial,'Noto Sans KR'" font-size="14" font-weight="bold" fill="#46657b"><text x="105" y="94">교실 A</text><text x="225" y="76">교실 B</text><text x="345" y="59">과학실</text><text x="105" y="184">교실 C</text><text x="225" y="188">교실 D</text><text x="345" y="160">중앙복도</text><text x="575" y="185">교실 E</text><text x="675" y="167">교실 F</text><text x="742" y="218" fill="#c93636">중앙계단</text><text x="55" y="260" fill="#25875a">서쪽계단</text></g>
+<path id="pathOld" class="oldPath" d="M155 145 C300 175 430 195 575 210 S730 220 775 225"/>
+<path id="pathAi" class="aiPath" d="M155 145 C300 175 420 185 500 260 S360 285 90 255"/>
+<g class="people"><circle cx="160" cy="145" r="7" fill="#1976e8"/><circle cx="180" cy="150" r="7" fill="#1976e8"/><circle cx="200" cy="155" r="7" fill="#1976e8"/><circle cx="220" cy="160" r="7" fill="#1976e8"/></g>
+<g class="people2"><circle cx="160" cy="140" r="6" fill="#1976e8"/><circle cx="185" cy="145" r="6" fill="#1976e8"/><circle cx="210" cy="150" r="6" fill="#1976e8"/></g>
+<rect x="390" y="350" width="190" height="42" rx="10" fill="#ffffffdd" stroke="#9db7c8"/><text x="485" y="376" text-anchor="middle" font-family="Arial,'Noto Sans KR'" font-size="15" font-weight="bold" fill="#45657d">2F · SAMPLE BIM</text>
+</g></svg><div class="badge" id="badge">2F · SAMPLE BIM · 기존 동선</div><div class="hint">BIM 공간 · 실시간 학생 이동</div><div class="flow"><span class="green">● PEOPLE FLOW</span>　<span id="clock">00:00 / 00:20</span></div></div>
+<div class="controls"><button class="play" id="play">❚❚ 일시정지</button><button id="reset">↺ 처음부터</button><input id="timeline" type="range" min="0" max="20" step=".1" value="0"><span id="status" style="font-size:9px;color:#71869a">자동 반복 재생</span></div>
+<div class="legend">🔴 고혼잡　 🟡 중혼잡　 🟢 원활　 🔵 학생 이동</div>
+<div class="slider">시뮬레이션 학생 수 <input type="range" min="400" max="1600" value="1200" id="students"><b id="studentVal">1,200명</b></div>
+<div class="bottom"><div class="card"><div class="ct">♟ 기존 동선 → AI 최적화 동선</div><div class="compare"><div class="mini">중앙계단 집중<br>🔴 92% 혼잡</div><div class="arrow">→</div><div class="mini">서쪽계단 분산<br>🟢 55% 혼잡</div></div></div><div class="card"><div class="ct">AI 최적화 효과</div><div class="effects"><div class="effect"><b>62% → 38%</b><small>전체 혼잡도</small></div><div class="effect"><b>+35%</b><small>서쪽계단 이용</small></div><div class="effect"><b>-28%</b><small>대기시간</small></div></div></div></div></main>
+<aside class="right"><div class="rhead"><h3>AI 혼잡도 분석</h3><span class="time">12:30~13:00 예측</span></div>
+<div class="gauge"><div class="circle"><div class="inner"><div><b id="gauge">62%</b><br><small>전체 혼잡도</small></div></div></div><div class="top"><h4>TOP 3 혼잡 구역</h4><div><span>중앙계단</span><b class="red" id="stair">92%</b></div><div><span>2F 중앙복도</span><b class="red">81%</b></div><div><span>1F 로비</span><b class="red">76%</b></div></div></div>
+<div class="chart"><svg viewBox="0 0 310 125"><g stroke="#e5edf4"><path d="M15 100H300M15 70H300M15 40H300M15 10H300"/></g><polyline fill="none" stroke="#ef4444" stroke-width="3" points="15,95 60,78 105,52 150,27 195,42 240,67 300,86"/></svg></div>
 <div class="insight"><b>⚠ AI 분석 결과</b><br>중앙계단에 이동량이 집중되어 12:30~13:00 사이 병목이 예상됩니다.<br><br><b>✓ 최적화 시</b><br>서쪽계단으로 약 35%의 이동을 분산하여 중앙계단 혼잡도를 낮출 수 있습니다.</div>
-<div class="recommend"><div class="cardTitle">AI 최적화 제안</div><div class="rec"><span class="num">1</span><span>2층 학생 일부를 서쪽계단으로 유도합니다.</span></div><div class="rec"><span class="num">2</span><span>점심시간 5분 전 복도 분산 이동을 시작합니다.</span></div><div class="rec"><span class="num">3</span><span>중앙계단 주변 대기 영역을 제한합니다.</span></div></div>
-</aside>
-</div></div>
-<script type="module">
-import * as THREE from "three";
-import {OrbitControls} from "three/addons/controls/OrbitControls.js";
-import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
-import {IFCLoader} from "three/addons/loaders/IFCLoader.js";
-
-const canvas=document.getElementById("bimViewer");
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-document.getElementById("bimFallback").style.display="none";
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.setSize(canvas.clientWidth,canvas.clientHeight,false);
-renderer.shadowMap.enabled=true;
-const scene=new THREE.Scene();
-scene.background=new THREE.Color(0xe4f1f8);
-const camera=new THREE.PerspectiveCamera(42,canvas.clientWidth/canvas.clientHeight,.1,1000);
-camera.position.set(28,24,30);
-const controls=new OrbitControls(camera,canvas);
-controls.enableDamping=true;controls.target.set(0,5,0);controls.minDistance=12;controls.maxDistance=65;
-scene.add(new THREE.HemisphereLight(0xffffff,0x91a8b8,2.2));
-const dl=new THREE.DirectionalLight(0xffffff,2.5);dl.position.set(12,30,15);dl.castShadow=true;scene.add(dl);
-const grid=new THREE.GridHelper(46,23,0xa9c5d7,0xd4e4ed);grid.position.y=-.05;scene.add(grid);
-
-let building=new THREE.Group(),people=new THREE.Group(),hotspots=new THREE.Group();scene.add(building,people,hotspots);
-let optimized=false,studentN=1200,currentFloor=2,clock=new THREE.Clock(),loadedModel=null,simPlaying=true,simTime=0,simLast=performance.now();
-
-function mat(color,opacity=1){return new THREE.MeshStandardMaterial({color,transparent:opacity<1,opacity,roughness:.72,metalness:.05})}
-function clearGroup(g){while(g.children.length)g.remove(g.children[0]);}
-function makeBox(g,x,y,z,w,h,d,color,opacity=1){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(color,opacity));m.position.set(x,y+h/2,z);m.castShadow=true;m.receiveShadow=true;g.add(m);return m}
-function sampleBIM(){
- clearGroup(building);clearGroup(people);clearGroup(hotspots);
- const floorY=(currentFloor-1)*4;
- for(let f=0;f<5;f++){
-   const y=f*4;
-   const visible=f===currentFloor-1;
-   const op=visible?1:.16;
-   makeBox(building,0,y,0,24,.25,16,0xdfeaf2,op);
-   const roomCols=[0xeaf4fa,0xf1f6f9,0xe8f3f8,0xf0f5f7,0xe9f7ef,0xf4f3ed];
-   for(let i=0;i<6;i++){const x=-9+(i%3)*9,z=-5+(Math.floor(i/3))*10;makeBox(building,x,y+.25,z,7.2,3.1,7.2,roomCols[i],op)}
-   if(visible){
-     makeBox(building,0,y+.25,0,2.8,3.1,16,0xd4e3ec,1);
-     makeBox(building,9,y+.25,0,2.3,3.1,5,optimized?0xb8efd0:0xf6b3b3,1);
-     makeBox(building,-9,y+.25,0,2.3,3.1,5,0xbcead0,1);
-     const stair=new THREE.Mesh(new THREE.BoxGeometry(2.5,3.2,5),mat(optimized?0x55bd82:0xef6d6d));stair.position.set(9,y+1.85,0);building.add(stair);
-     const west=new THREE.Mesh(new THREE.BoxGeometry(2.5,3.2,5),mat(0x55bd82));west.position.set(-9,y+1.85,0);building.add(west);
-     const lobby=new THREE.Mesh(new THREE.BoxGeometry(6,3.0,2.5),mat(optimized?0xd9f5e5:0xffdca8));lobby.position.set(0,y+1.7,6.7);building.add(lobby);
-   }
- }
- addPeople(floorY);
- addHotspot(floorY);
-}
-function addPeople(y){
- const geo=new THREE.SphereGeometry(.16,8,8);
- for(let i=0;i<Math.min(70,Math.round(studentN/18));i++){
-   const m=new THREE.Mesh(geo,mat(i%6===0?0xef4444:0x1976e8));m.position.y=y+3.55;people.add(m);
- }
-}
-function addHotspot(y){
- const geo=new THREE.CircleGeometry(2.4,32);const h=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({color:0xef4444,transparent:true,opacity:.20,depthWrite:false}));h.rotation.x=-Math.PI/2;h.position.set(9,y+3.25,0);hotspots.add(h);
- const h2=new THREE.Mesh(new THREE.CircleGeometry(1.2,32),new THREE.MeshBasicMaterial({color:0xef4444,transparent:true,opacity:.28,depthWrite:false}));h2.rotation.x=-Math.PI/2;h2.position.set(9,y+3.26,0);hotspots.add(h2);
-}
-function updateMode(){
- document.getElementById("normalBtn").classList.toggle("active",!optimized);document.getElementById("optBtn").classList.toggle("active",optimized);
- document.getElementById("viewerBadge").textContent=currentFloor+"F · "+(loadedModel?"IMPORTED BIM":"SAMPLE BIM")+" · "+(optimized?"AI 최적화":"기존 동선");
- document.getElementById("gaugeVal").textContent=optimized?"38%":"62%";document.getElementById("topStair").textContent=optimized?"55%":"92%";document.getElementById("effectCong").textContent=optimized?"62% → 38%":"62% → 38%";
- sampleBIM();
-}
-function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}addEventListener("resize",resize);
-function animate(now){requestAnimationFrame(animate);now=now||performance.now();const dt=Math.min(.05,(now-simLast)/1000);simLast=now;if(simPlaying){simTime+=dt;if(simTime>20)simTime=0}const phaseBase=simTime/20;const t=simTime*1.8;people.children.forEach((p,i)=>{const phase=(phaseBase+i*.021)%1;if(optimized){p.position.x=-9+18*phase;p.position.z=(i%2?5:-3)+Math.sin(t*2+i)*.5}else{p.position.x=-7+16*phase;p.position.z=Math.sin(t*2+i)*1.3;p.position.x+=phase>.72?7:0}p.position.y=(currentFloor-1)*4+3.55});document.getElementById("simClock").textContent="00:"+String(Math.floor(simTime)).padStart(2,"0")+" / 00:20";document.getElementById("simTimeline").value=simTime;document.getElementById("simProgress").style.width=(phaseBase*100)+"%";controls.update();renderer.render(scene,camera)}animate(performance.now());resize();sampleBIM();
-
-document.getElementById("normalBtn").onclick=()=>{optimized=false;updateMode()};
-document.getElementById("optBtn").onclick=()=>{optimized=true;updateMode()};
-document.getElementById("studentSlider").oninput=e=>{studentN=+e.target.value;document.getElementById("studentCount").textContent=studentN.toLocaleString()+"명";sampleBIM()};
-document.querySelectorAll(".floor").forEach((b,i)=>b.onclick=()=>{document.querySelectorAll(".floor").forEach(x=>x.classList.remove("active"));b.classList.add("active");currentFloor=i+1;document.getElementById("floorTitle").textContent=currentFloor+"층";sampleBIM();document.getElementById("viewerBadge").textContent=currentFloor+"F · "+(loadedModel?"IMPORTED BIM":"SAMPLE BIM")+" · "+(optimized?"AI 최적화":"기존 동선")});
-
-async function importBIM(file){
- if(!file)return;
- const name=file.name.toLowerCase();document.getElementById("fileName").textContent=file.name;document.getElementById("modelState").textContent="불러오는 중…";document.getElementById("fileStatus").textContent="BIM geometry를 3D 뷰어에 불러오는 중입니다.";
- if(name.endsWith(".glb")||name.endsWith(".gltf")){
-   const url=URL.createObjectURL(file);const loader=new GLTFLoader();
-   loader.load(url,g=>{if(loadedModel)scene.remove(loadedModel);loadedModel=g.scene;loadedModel.scale.setScalar(1);scene.add(loadedModel);building.visible=false;hotspots.visible=false;people.visible=true;document.getElementById("modelState").textContent="GLB/GLTF 로드 완료";document.getElementById("fileStatus").textContent="실제 3D 모델 위에서 AI 혼잡 시뮬레이션을 표시합니다.";document.getElementById("spaceCount").textContent="3D";document.getElementById("levelCount").textContent="모델";document.getElementById("viewerBadge").textContent=currentFloor+"F · IMPORTED BIM · "+(optimized?"AI 최적화":"기존 동선");URL.revokeObjectURL(url)},undefined,e=>{document.getElementById("modelState").textContent="로드 실패";document.getElementById("fileStatus").textContent="GLB/GLTF 파일을 확인해주세요."});
- }else if(name.endsWith(".ifc")||name.endsWith(".ifczip")){
-   try{
-    const loader=new IFCLoader();await loader.ifcManager.setWasmPath("https://cdn.jsdelivr.net/npm/web-ifc@0.0.77/");
-    const url=URL.createObjectURL(file);const model=await loader.loadAsync(url);if(loadedModel)scene.remove(loadedModel);loadedModel=model;scene.add(model);building.visible=false;hotspots.visible=false;document.getElementById("modelState").textContent="IFC 로드 완료";document.getElementById("fileStatus").textContent="실제 IFC geometry를 3D BIM 화면에 표시합니다.";document.getElementById("spaceCount").textContent="IFC";document.getElementById("levelCount").textContent="IFC";document.getElementById("viewerBadge").textContent=currentFloor+"F · IMPORTED IFC · "+(optimized?"AI 최적화":"기존 동선");URL.revokeObjectURL(url);
-   }catch(e){document.getElementById("modelState").textContent="IFC 로드 실패";document.getElementById("fileStatus").textContent="브라우저 환경 또는 IFC 파일 형식을 확인해주세요."}
- }else if(name.endsWith(".json")){
-   const text=await file.text();try{const j=JSON.parse(text);document.getElementById("spaceCount").textContent=j.spaces?.length||j.spaces||24;document.getElementById("levelCount").textContent=j.levels?.length||j.levels||5;document.getElementById("modelState").textContent="BIM JSON 연결";document.getElementById("fileStatus").textContent="JSON 공간정보를 분석 데이터로 연결했습니다."}catch(e){document.getElementById("modelState").textContent="JSON 오류"}}
-}
-async function loadPublishedSampleBIM(){try{const res=await fetch("sample-school-bim.json",{cache:"no-store"});if(!res.ok)throw new Error("sample BIM not found");const j=await res.json();document.getElementById("modelState").textContent="샘플 BIM 분석 완료";document.getElementById("spaceCount").textContent=j.spaces?.length||24;document.getElementById("levelCount").textContent=j.levels?.length||5;document.getElementById("fileName").textContent="sample-school-bim.json";document.getElementById("fileStatus").textContent="게시된 샘플 BIM의 공간·층수·혼잡 분석 데이터를 연결했습니다. 아래 3D BIM에서 학생 이동을 시뮬레이션합니다.";document.getElementById("gaugeVal").textContent=(j.analysis?.congestion?.overall||62)+"%";document.getElementById("topStair").textContent=(j.analysis?.congestion?.centralStair||92)+"%"}catch(e){document.getElementById("modelState").textContent="내장 샘플 BIM";document.getElementById("fileStatus").textContent="샘플 BIM 데이터 파일을 불러오지 못해 내장 가상 BIM으로 분석합니다."}}
-loadPublishedSampleBIM();
-const simPlay=document.getElementById("simPlay"),simReset=document.getElementById("simReset"),simTimeline=document.getElementById("simTimeline");simPlay.onclick=()=>{simPlaying=!simPlaying;simPlay.textContent=simPlaying?"❚❚ 일시정지":"▶ 재생";document.getElementById("simStatus").textContent=simPlaying?"자동 반복 재생":"일시정지"};simReset.onclick=()=>{simTime=0;simPlaying=true;simPlay.textContent="❚❚ 일시정지";document.getElementById("simStatus").textContent="처음부터 재생"};simTimeline.oninput=e=>{simTime=Number(e.target.value);simPlaying=false;simPlay.textContent="▶ 재생";document.getElementById("simStatus").textContent="원하는 시간으로 이동"};document.getElementById("bimFile").onchange=e=>importBIM(e.target.files[0]);
-</script>
-</body></html>
+<div style="margin-top:10px"><div class="ct">AI 최적화 제안</div><div class="rec"><span class="num">1</span><span>2층 학생 일부를 서쪽계단으로 유도합니다.</span></div><div class="rec"><span class="num">2</span><span>점심시간 5분 전 복도 분산 이동을 시작합니다.</span></div><div class="rec"><span class="num">3</span><span>중앙계단 주변 대기 영역을 제한합니다.</span></div></div></aside></div></div>
+<script>
+let ai=false,playing=true,t=0,last=performance.now();
+const oldBtn=document.getElementById('old'),aiBtn=document.getElementById('ai'),pathOld=document.getElementById('pathOld'),pathAi=document.getElementById('pathAi');
+function mode(){oldBtn.classList.toggle('on',!ai);aiBtn.classList.toggle('on',ai);document.getElementById('badge').textContent=(document.getElementById('floorTitle').textContent[0])+'F · SAMPLE BIM · '+(ai?'AI 최적화':'기존 동선');document.getElementById('gauge').textContent=ai?'38%':'62%';document.getElementById('stair').textContent=ai?'55%':'92%';pathOld.style.display=ai?'none':'block';pathAi.style.display=ai?'block':'none'}
+oldBtn.onclick=()=>{ai=false;mode()};aiBtn.onclick=()=>{ai=true;mode()};
+document.querySelectorAll('.floors button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.floors button').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('floorTitle').textContent=b.dataset.floor+'층';mode()});
+document.getElementById('students').oninput=e=>document.getElementById('studentVal').textContent=Number(e.target.value).toLocaleString()+'명';
+document.getElementById('play').onclick=()=>{playing=!playing;document.getElementById('play').textContent=playing?'❚❚ 일시정지':'▶ 재생';document.getElementById('status').textContent=playing?'자동 반복 재생':'일시정지'};
+document.getElementById('reset').onclick=()=>{t=0;playing=true;document.getElementById('play').textContent='❚❚ 일시정지'};
+document.getElementById('timeline').oninput=e=>{t=+e.target.value;playing=false;document.getElementById('play').textContent='▶ 재생'};
+function loop(now){let dt=Math.min(.05,(now-last)/1000);last=now;if(playing){t+=dt;if(t>20)t=0}document.getElementById('timeline').value=t;document.getElementById('clock').textContent='00:'+String(Math.floor(t)).padStart(2,'0')+' / 00:20';requestAnimationFrame(loop)}requestAnimationFrame(loop);mode();
+</script></body></html>
