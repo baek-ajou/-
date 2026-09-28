@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smart School Flow | AI + BIM</title>
+<style>
+:root{--blue:#1976e8;--navy:#12355b;--bg:#f5f9fe;--line:#dce8f5;--muted:#71839a;--red:#ef4444;--green:#20a66a;--yellow:#f5b942}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#edf6ff,#f9fcff);font-family:Inter,Pretendard,"Noto Sans KR",Arial,sans-serif;color:#17324d}
+button{font:inherit}.app{max-width:1500px;margin:18px auto;background:#fff;border:1px solid #d9e6f2;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px #6c8eaa22}
+.header{height:82px;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,#eaf5ff,#fff)}
+.brand{display:flex;align-items:center;gap:13px}.brandIcon{width:44px;height:44px;border:2px solid #2381ed;border-radius:10px;display:grid;place-items:center;color:#2381ed;font-size:25px}.brand h1{font-size:24px;margin:0;color:#123c66}.brand p{margin:2px 0 0;color:#44739e;font-size:13px}.slogan{color:#4a81b1;font-weight:700;font-style:italic}
+.body{display:grid;grid-template-columns:180px minmax(0,1fr) 350px;min-height:900px}.side{border-right:1px solid var(--line);padding:16px 10px;background:#fbfdff}.nav{border:0;background:none;width:100%;padding:12px 14px;text-align:left;border-radius:9px;color:#55728f;cursor:pointer;font-weight:600;margin-bottom:4px}.nav.active{background:#e7f3ff;color:#1470db}.nav:hover{background:#eef6fd}.schoolCard{margin:35px 7px 0;border-top:1px solid var(--line);padding-top:18px}.schoolPic{height:100px;border-radius:9px;background:linear-gradient(135deg,#b8d8ee,#e9f5ff);display:grid;place-items:center;font-size:44px}.schoolName{font-weight:800;margin-top:10px}.facts{font-size:12px;line-height:1.9;color:#71839a}.quote{margin-top:20px;font-size:12px;color:#6d89a4;font-style:italic}
+.center{padding:18px;background:#f8fbff}.titleRow{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.titleRow h2{margin:0;font-size:18px}.floors{display:flex;gap:5px}.floor{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 11px;color:#5f7690;cursor:pointer}.floor.active{background:#1976e8;color:#fff;border-color:#1976e8}.toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.toggle{background:#e8f0f8;padding:4px;border-radius:9px;display:flex;gap:3px}.toggle button{border:0;background:none;padding:7px 12px;border-radius:7px;cursor:pointer;color:#61778d;font-size:12px}.toggle button.active{background:#fff;box-shadow:0 2px 6px #7592ad33;color:#176fd1;font-weight:800}.mapWrap{position:relative;background:#edf4fa;border:1px solid var(--line);border-radius:12px;padding:10px;overflow:hidden}.mapWrap svg{width:100%;display:block;border-radius:8px}.legend{display:flex;gap:18px;font-size:11px;color:#6b8197;padding:8px 2px}.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}.simRow{display:flex;align-items:center;gap:10px;font-size:12px;color:#71839a}.simRow input{accent-color:#1976e8;width:180px}.simRow strong{color:#1d4f7d}.bottomGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:12px;margin-top:12px}.card{background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px}.cardTitle{font-weight:800;font-size:13px;margin-bottom:10px}.compare{display:grid;grid-template-columns:1fr 35px 1fr;gap:8px;align-items:center}.mini{background:#f6faff;border:1px solid var(--line);border-radius:8px;padding:6px}.mini svg{width:100%;display:block}.mini span{font-size:10px;color:#657d96}.arrow{font-size:24px;color:#1976e8;text-align:center}.effects{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.effect{background:#f6faff;border-radius:9px;padding:10px}.effect b{display:block;color:#1976e8;font-size:18px}.effect small{font-size:10px;color:#71839a}
+.right{border-left:1px solid var(--line);padding:16px;background:#fff}.rightHead{display:flex;justify-content:space-between;align-items:center}.rightHead h3{margin:0;font-size:15px}.time{font-size:10px;color:#9aaabd}.gauge{margin:15px 0;border-bottom:1px solid var(--line);padding-bottom:14px;display:flex;gap:17px;align-items:center}.circle{width:126px;height:126px;border-radius:50%;background:conic-gradient(#ef4444 0 62%,#e7edf3 62%);display:grid;place-items:center;position:relative}.circle:after{content:"";position:absolute;width:94px;height:94px;border-radius:50%;background:#fff}.circleText{position:relative;z-index:1;text-align:center}.circleText b{display:block;font-size:28px}.circleText span{font-size:10px;color:#758ba0}.top3{flex:1}.top3 h4{margin:0 0 8px;font-size:12px}.top3 div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eef3f7;font-size:11px}.red{color:#ef4444;font-weight:800}.chart{height:155px;border-bottom:1px solid var(--line);margin-top:8px}.chart svg{width:100%;height:100%}.insight{margin-top:14px;background:#f5faff;border-radius:9px;padding:11px;font-size:11px;line-height:1.6}.insight b{color:#196fd0}.recommend{margin-top:14px}.rec{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #eef3f7;font-size:11px;line-height:1.5}.num{min-width:24px;height:24px;border-radius:50%;background:#1976e8;color:#fff;display:grid;place-items:center;font-weight:800}.live{display:inline-flex;gap:5px;align-items:center;font-size:10px;color:#20a66a;font-weight:800}.live i{width:7px;height:7px;background:#20a66a;border-radius:50%;animation:pulse 1.2s infinite}@keyframes pulse{50%{opacity:.3}}
+@media(max-width:1100px){.body{grid-template-columns:150px 1fr}.right{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}.right{display:grid;grid-template-columns:1fr 1fr;gap:14px}.rightHead,.recommend{grid-column:1/-1}}@media(max-width:760px){.body{display:block}.side{border-right:0;border-bottom:1px solid var(--line);display:flex;overflow:auto}.nav{min-width:120px}.schoolCard{display:none}.bottomGrid{grid-template-columns:1fr}.slogan{display:none}.right{display:block}.header{height:auto}.floors{overflow:auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="header">
+ <div class="brand"><div class="brandIcon">🏫</div><div><h1>Smart School Flow</h1><p>AI + BIM 기반 학교 공간 혼잡도 분석 및 최적화 서비스</p></div></div>
+ <div class="slogan">더 스마트한 동선, 더 쾌적한 학교</div>
+</header>
+<div class="body">
+<aside class="side">
+ <button class="nav active">⌂　홈</button><button class="nav">▣　건물 개요</button><button class="nav">▥　혼잡도 분석</button><button class="nav">♧　동선 시뮬레이션</button><button class="nav">♢　최적화 제안</button><button class="nav">⚙　설정</button>
+ <div class="schoolCard"><div class="schoolPic">🏫</div><div class="schoolName">OO고등학교</div><div class="facts">규모　지상 5층<br>학생 수　1,200명<br>건축 연도　2010년</div><div class="quote">“AI와 BIM이 만드는<br>더 효율적이고 안전한 학교”</div></div>
+</aside>
+<main class="center">
+ <div class="titleRow"><h2><span id="floorTitle">2층</span> 전체 현황 <small style="font-weight:500;color:#8195aa">(실시간 혼잡도)</small></h2><div class="floors"><button class="floor">1층</button><button class="floor active">2층</button><button class="floor">3층</button><button class="floor">4층</button><button class="floor">5층</button></div></div>
+ <div class="toolbar"><div class="live"><i></i> LIVE ANALYSIS</div><div class="toggle"><button id="normalBtn" class="active">기존 동선</button><button id="optBtn">AI 최적화</button></div></div>
+ <div class="mapWrap">
+ <svg viewBox="0 0 900 530" id="building">
+  <defs><linearGradient id="road" x1="0" x2="1"><stop stop-color="#22c55e"/><stop offset=".48" stop-color="#facc15"/><stop offset="1" stop-color="#ef4444"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-opacity=".16"/></filter></defs>
+  <rect width="900" height="530" fill="#eaf2f8"/>
+  <g filter="url(#shadow)">
+   <polygon points="95,115 720,75 820,135 195,178" fill="#d8e5ef"/>
+   <polygon points="95,115 195,178 195,425 95,360" fill="#d0deea"/>
+   <polygon points="195,178 820,135 820,385 195,425" fill="#fff" stroke="#aebfd0" stroke-width="2"/>
+  </g>
+  <g id="rooms" stroke="#b8c9d8" stroke-width="2">
+   <rect x="220" y="195" width="145" height="85" rx="5" fill="#f8fbfd"/><rect x="385" y="184" width="145" height="85" rx="5" fill="#f8fbfd"/><rect x="550" y="174" width="145" height="85" rx="5" fill="#f8fbfd"/>
+   <rect x="220" y="310" width="145" height="85" rx="5" fill="#f8fbfd"/><rect x="385" y="299" width="145" height="85" rx="5" fill="#f8fbfd"/><rect x="550" y="288" width="145" height="85" rx="5" fill="#dff7e9"/>
+  </g>
+  <g font-family="sans-serif" font-size="15" fill="#38536d" font-weight="700"><text x="292" y="240" text-anchor="middle">2-1반</text><text x="457" y="229" text-anchor="middle">2-2반</text><text x="622" y="219" text-anchor="middle">2-3반</text><text x="292" y="355" text-anchor="middle">도서관</text><text x="457" y="344" text-anchor="middle">교무실</text><text x="622" y="333" text-anchor="middle">서쪽계단</text></g>
+  <polygon id="hall" points="210,281 705,246 705,288 210,326" fill="url(#road)" opacity=".88"/>
+  <g id="hotspot"><ellipse cx="610" cy="270" rx="88" ry="45" fill="#ef4444" opacity=".18"/><ellipse cx="610" cy="270" rx="54" ry="29" fill="#ef4444" opacity=".20"/></g>
+  <rect x="710" y="215" width="80" height="90" rx="8" fill="#fee2e2" stroke="#ef4444" stroke-width="3" id="centralStair"/>
+  <text x="750" y="255" text-anchor="middle" font-size="14" font-weight="800" fill="#a61b1b">중앙계단</text><text id="stairPct" x="750" y="277" text-anchor="middle" font-size="13" font-weight="800" fill="#ef4444">92%</text>
+  <g id="paths" fill="none" stroke="#fef08a" stroke-width="5" stroke-linecap="round"><path d="M292 280 Q470 275 750 260"/><path d="M457 270 Q570 265 750 260"/><path d="M622 260 Q680 258 750 260"/></g>
+  <g id="people"></g>
+  <g font-family="sans-serif" font-size="12"><rect x="38" y="438" width="180" height="60" rx="10" fill="#fff" opacity=".96"/><text x="54" y="459" fill="#667d93">혼잡도</text><rect x="54" y="470" width="145" height="9" rx="5" fill="url(#road)"/><text x="54" y="491" fill="#22a66a">낮음</text><text x="177" y="491" fill="#ef4444">높음</text></g>
+ </svg>
+ <div class="legend"><span><i style="background:#20a66a"></i>원활</span><span><i style="background:#f5b942"></i>주의</span><span><i style="background:#ef4444"></i>혼잡</span><span>● 학생 이동 경로</span></div>
+ <div class="simRow">시뮬레이션 학생 수 <input id="studentSlider" type="range" min="400" max="1600" value="1200"><strong id="studentCount">1,200명</strong></div>
+ </div>
+ <div class="bottomGrid">
+  <div class="card"><div class="cardTitle">♟ 시뮬레이션 비교</div><div class="compare">
+   <div class="mini"><svg viewBox="0 0 220 110"><rect x="10" y="15" width="200" height="80" fill="#fff" stroke="#b7c8d7"/><path d="M30 40H190M30 70H190" stroke="#d6e1eb"/><circle cx="175" cy="55" r="24" fill="#fecaca"/><circle cx="175" cy="55" r="9" fill="#ef4444"/></svg><span>중앙 계단으로 인구 집중 → 혼잡도 높음</span></div><div class="arrow">›</div>
+   <div class="mini"><svg viewBox="0 0 220 110"><rect x="10" y="15" width="200" height="80" fill="#fff" stroke="#b7c8d7"/><path d="M30 40H190M30 70H190" stroke="#d6e1eb"/><circle cx="50" cy="72" r="13" fill="#bbf7d0"/><circle cx="165" cy="72" r="13" fill="#bbf7d0"/></svg><span>서쪽 계단 및 분산 동선 유도 → 혼잡도 감소</span></div>
+  </div></div>
+  <div class="card"><div class="cardTitle">♟ 개선 효과</div><div class="effects"><div class="effect"><b id="effectCong">62% → 38%</b><small>혼잡도 감소</small></div><div class="effect"><b>2.8 → 1.9분</b><small>평균 이동시간</small></div><div class="effect"><b>45% ↓</b><small>동선 충돌 위험</small></div></div></div>
+ </div>
+</main>
+<aside class="right">
+ <div class="rightHead"><h3>♟ 혼잡도 분석 결과</h3><span class="time">2026. 09. 28 기준</span></div>
+ <div class="gauge"><div class="circle"><div class="circleText"><b id="gaugeVal">62%</b><span>전체 혼잡도</span></div></div><div class="top3"><h4>주요 혼잡 구간 Top 3</h4><div><span>① 2층 중앙계단</span><b class="red" id="topStair">92%</b></div><div><span>② 2-3반 앞 복도</span><b class="red">78%</b></div><div><span>③ 급식실 입구</span><b class="red">71%</b></div></div></div>
+ <div class="cardTitle">시간대별 혼잡도 예측</div><div class="chart"><svg viewBox="0 0 320 150" preserveAspectRatio="none"><path d="M10 125 C55 108 70 83 115 78 S175 35 195 30 S230 62 250 76 S285 68 310 73" fill="none" stroke="#237fe6" stroke-width="4"/><path d="M10 125 C55 108 70 83 115 78 S175 35 195 30 S230 62 250 76 S285 68 310 73 L310 145 L10 145Z" fill="#dceeff"/><circle cx="195" cy="30" r="7" fill="#ef4444"/><rect x="165" y="3" width="70" height="24" rx="12" fill="#ef4444"/><text x="200" y="20" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">13시 85%</text><g fill="#8da0b2" font-size="9"><text x="8" y="146">09시</text><text x="85" y="146">11시</text><text x="165" y="146">13시</text><text x="235" y="146">15시</text><text x="295" y="146">17시</text></g></svg></div>
+ <div class="insight"><b>♧ AI 분석 인사이트</b><br>⚠ 2층 중앙계단에서 13시~13시 30분 사이 혼잡도 90% 이상 예상<br>⚠ 급식실 이용 시간대(12시~13시) 복도 인구 집중<br>✓ 서쪽 계단 활용 시 중앙계단 혼잡도 약 25% 감소 가능</div>
+ <div class="recommend"><div class="cardTitle">💡 AI 최적화 제안</div><div class="rec"><span class="num">1</span><span><b>2층 중앙계단</b> 이용 분산을 위해 서쪽 계단 개방 및 안내<br><small>(혼잡 92% → 55% 예상)</small></span></div><div class="rec"><span class="num">2</span><span><b>급식실</b> 이용 시간대에 복도 동선 일방향 운영<br><small>(혼잡 71% → 43% 예상)</small></span></div><div class="rec"><span class="num">3</span><span><b>2-3반 앞 복도</b> 이동 유도 표지 설치<br><small>(혼잡 78% → 52% 예상)</small></span></div></div>
+</aside>
+</div></div>
+<script>
+const $=s=>document.querySelector(s);let optimized=false;
+function renderPeople(){const g=$("#people");g.innerHTML="";const n=Math.round(+$("#studentSlider").value/55);for(let i=0;i<n;i++){const c=document.createElementNS("http://www.w3.org/2000/svg","circle");if(optimized){c.setAttribute("cx",250+(i%10)*48);c.setAttribute("cy",290+(i%4)*18);c.setAttribute("fill","#1784e8")}else{c.setAttribute("cx",300+(i%8)*50);c.setAttribute("cy",270+(i%3)*18);c.setAttribute("fill",i%4===0?"#ef4444":"#1976e8")}c.setAttribute("r",i%5===0?5:3.5);g.appendChild(c)}}
+function setMode(v){optimized=v;$("#normalBtn").classList.toggle("active",!v);$("#optBtn").classList.toggle("active",v);$("#stairPct").textContent=v?"55%":"92%";$("#topStair").textContent=v?"55%":"92%";$("#gaugeVal").textContent=v?"38%":"62%";$("#effectCong").textContent=v?"62% → 38%":"62% → 38%";$("#centralStair").setAttribute("fill",v?"#dcfce7":"#fee2e2");$("#centralStair").setAttribute("stroke",v?"#20a66a":"#ef4444");$("#stairPct").setAttribute("fill",v?"#168a58":"#ef4444");renderPeople()}
+$("#normalBtn").onclick=()=>setMode(false);$("#optBtn").onclick=()=>setMode(true);$("#studentSlider").oninput=()=>{const n=+$("#studentSlider").value;$("#studentCount").textContent=n.toLocaleString()+"명";renderPeople()};
+document.querySelectorAll(".floor").forEach((b,i)=>b.onclick=()=>{document.querySelectorAll(".floor").forEach(x=>x.classList.remove("active"));b.classList.add("active");$("#floorTitle").textContent=(i+1)+"층";});
+renderPeople();
+</script>
+</body></html>
