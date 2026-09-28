@@ -107,6 +107,10 @@ html,body{background:#111518!important}
 .layout{grid-template-columns:185px minmax(760px,1fr) 335px!important;min-height:calc(100vh - 86px)!important}.side{background:#22272b!important}.sideTitle{padding:6px 9px 10px;color:#d4dade;font:700 9px Consolas,monospace;letter-spacing:.6px}.sideSection{padding:5px 9px;color:#6f7a81;font:8px Consolas,monospace;border-bottom:1px solid #3b4247;margin-bottom:5px}.nav{text-transform:uppercase!important;font:9px Consolas,monospace!important}.school{margin-top:22px!important}.main{background:#30363a!important}
 .dockTabs{height:30px;display:flex;border-bottom:1px solid #454d52;margin:-12px -10px 10px;background:#1e2326}.dockTab{flex:1;border:0;border-right:1px solid #3c4449;background:transparent;color:#858f96;font:8px Consolas,monospace}.dockTab.active{color:#fff;background:#30363a;border-bottom:2px solid #d9902f}.aiDock{display:none;border:1px solid #4b5358;background:#202529;padding:9px;margin-bottom:10px}.aiDock.show{display:block}.aiDockHeader{display:flex;align-items:center;gap:6px;color:#dce1e4;font:9px Consolas,monospace;border-bottom:1px solid #3e464b;padding-bottom:8px}.aiDot{color:#d9902f}.engineState{margin-left:auto;color:#78838a}.scanBox{margin-top:9px;background:#292f33;border:1px solid #444d52;padding:8px}.scanTitle{font:8px Consolas,monospace;color:#9ca5aa}.scanBar{height:4px;background:#15191b;margin:7px 0;overflow:hidden}.scanBar i{display:block;height:100%;width:0;background:#d9902f;transition:width .25s}.scanMeta{display:flex;justify-content:space-between;color:#778188;font:8px Consolas,monospace}.scanMeta b{color:#d9a04e}.aiMetrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin:7px 0}.aiMetrics div{background:#292f33;border:1px solid #41494e;padding:7px}.aiMetrics span{display:block;color:#78838a;font:7px Consolas,monospace}.aiMetrics b{display:block;color:#e0e5e7;font:14px Consolas,monospace;margin-top:4px}.routeCard{border:1px solid #41494e;background:#292f33;padding:8px}.routeHead{display:flex;justify-content:space-between;color:#d9dfe2;font:8px Consolas,monospace}.routeHead span{color:#d9902f}.routeLine{margin-top:7px;color:#9ca5aa;font:8px Consolas,monospace}.routeSwatch{display:inline-block;width:20px;border-top:3px dashed #e35d56;margin-right:5px;vertical-align:middle}.greenSwatch{border-color:#62ad8d}.runAI,.applyAI{width:100%;margin-top:7px;height:27px;border:1px solid #5a6268;background:#343b40;color:#d8dde0;font:8px Consolas,monospace}.runAI{border-color:#b87928;color:#f1b15c}.applyAI{background:#c9872e;color:#171a1c;border-color:#e2a044;font-weight:700}.aiActive .viewer{box-shadow:inset 0 0 0 2px #d9902f,inset 0 0 100px #0006!important}.aiActive .live{color:#e1a34c!important}
 #aiDock + .rhead{margin-top:2px}.aiModeLabel{position:absolute;left:50%;top:9px;transform:translateX(-50%);background:#202529e8;border:1px solid #c78931;color:#e6ad5e;padding:5px 10px;font:8px Consolas,monospace;z-index:4}
+/* Space Syntax / Heatmap / AEC analytics */
+.spaceHeatmap{pointer-events:none;opacity:.62;mix-blend-mode:multiply}.spaceHeatmap rect{stroke:#ffffff;stroke-width:1;fill:#2d7ff9;fill-opacity:.42}
+.syntaxCard{margin-top:7px;background:#292f33;border:1px solid #41494e;padding:8px}.syntaxTitle{display:flex;justify-content:space-between;color:#dce1e4;font:8px Consolas,monospace}.syntaxTitle span{color:#d9902f}.syntaxMeta{margin-top:5px;color:#7f898f;font:7px Consolas,monospace}.syntaxRows{margin-top:6px}.syntaxRow{display:grid;grid-template-columns:34px 1fr 42px;align-items:center;gap:5px;margin:4px 0;color:#aeb7bc;font:7px Consolas,monospace}.syntaxBar{height:5px;background:#15191b}.syntaxBar i{display:block;height:100%;background:#d9902f}.syntaxFormula{margin-top:6px;padding-top:6px;border-top:1px solid #3e464b;color:#8f999f;font:7px/1.4 Consolas,monospace}
+.aiActive #spaceHeatmap{opacity:.82}.aiActive .zoneHigh{fill-opacity:.16}
 </style></head>
 <body><div class="app">
 <header class="head">
@@ -201,6 +205,25 @@ html,body{background:#111518!important}
     <text x="852" y="451" text-anchor="middle" class="planLabel stairText">CENTRAL STAIR</text>
   </g>
 
+  <!-- 공간구문론 기반 공간 활성도 / 밀집도 Heatmap -->
+  <g id="spaceHeatmap" class="spaceHeatmap">
+    <rect id="hmA" x="92" y="78" width="142" height="102"/>
+    <rect id="hmB" x="242" y="78" width="142" height="102"/>
+    <rect id="hmC" x="92" y="188" width="142" height="102"/>
+    <rect id="hmD" x="242" y="188" width="142" height="102"/>
+    <rect id="hmE" x="92" y="298" width="142" height="102"/>
+    <rect id="hmF" x="242" y="298" width="142" height="102"/>
+    <rect id="hmG" x="532" y="78" width="174" height="102"/>
+    <rect id="hmH" x="714" y="78" width="194" height="102"/>
+    <rect id="hmI" x="532" y="188" width="174" height="102"/>
+    <rect id="hmJ" x="714" y="188" width="194" height="102"/>
+    <rect id="hmK" x="532" y="298" width="174" height="102"/>
+    <rect id="hmL" x="714" y="298" width="194" height="102"/>
+    <rect id="hmCorridor" x="400" y="72" width="116" height="366"/>
+    <rect id="hmWest" x="78" y="410" width="125" height="45"/>
+    <rect id="hmCentral" x="796" y="410" width="112" height="45"/>
+  </g>
+
   <!-- 혼잡도 오버레이 -->
   <g id="congestionZones" class="congestionZones">
     <rect class="zone zoneHigh" x="796" y="380" width="112" height="75"/>
@@ -260,9 +283,9 @@ html,body{background:#111518!important}
   <text x="86" y="495">LEVEL 02</text>
   <text x="914" y="495" text-anchor="end">SCALE 1:200 · BIM FLOW ANALYSIS</text>
 </g>
-</svg><div class="badge" id="badge">2F · SAMPLE BIM · 기존 동선</div><div class="hint">TOP VIEW · BIM SPACE / PEOPLE FLOW</div><div class="flow"><span class="green">● PEOPLE FLOW</span>　<span id="clock">00:00 / 00:20</span></div></div><div class="badge" id="badge">2F · SAMPLE BIM · 기존 동선</div><div class="hint">BIM 공간 · 실시간 학생 이동</div><div class="flow"><span class="green">● PEOPLE FLOW</span>　<span id="clock">00:00 / 00:20</span></div></div>
+</svg><div class="badge" id="badge">2F · SAMPLE BIM · 기존 동선</div><div class="hint">TOP VIEW · BIM SPACE / PEOPLE FLOW</div><div class="flow"><span class="green">● PEOPLE FLOW</span>　<span id="clock">00:00 / 00:20</span></div></div>
 <div class="controls"><button class="play" id="play">❚❚ 일시정지</button><button id="reset">↺ 처음부터</button><input id="timeline" type="range" min="0" max="20" step=".1" value="0"><span id="status" style="font-size:9px;color:#71869a">자동 반복 재생</span></div>
-<div class="legend">🔴 <b>고혼잡·가시성 저하</b>　 🟠 주의구역　 🟢 원활　 🔵 학생 이동　 <span style="color:#b91c1c">※ 기존 동선 기준 위험구역</span></div>
+<div class="legend">🔴 고밀집　🟠 혼잡　🟡 보통　🔵 여유　│ 공간구문론 + 인접행렬 고유벡터 기반 분석　│ 기존 동선 기준</div>
 <div class="slider">시뮬레이션 학생 수 <input type="range" min="400" max="1600" value="1200" id="students"><b id="studentVal">1,200명</b></div>
 <div class="bottom"><div class="card"><div class="ct">♟ 기존 동선 → AI 최적화 동선</div><div class="compare"><div class="mini">중앙계단 집중<br>🔴 92% 혼잡</div><div class="arrow">→</div><div class="mini">서쪽계단 분산<br>🟢 55% 혼잡</div></div></div><div class="card"><div class="ct">AI 최적화 효과</div><div class="effects"><div class="effect"><b>62% → 38%</b><small>전체 혼잡도</small></div><div class="effect"><b>+35%</b><small>서쪽계단 이용</small></div><div class="effect"><b>-28%</b><small>대기시간</small></div></div></div></div></main>
 <aside class="right"><div class="dockTabs">
@@ -286,6 +309,12 @@ html,body{background:#111518!important}
     <div class="routeLine"><span class="routeSwatch"></span> Central corridor → West Stair</div>
     <div class="routeLine"><span class="routeSwatch greenSwatch"></span> Distributed flow / 35% diversion</div>
   </div>
+  <div class="syntaxCard">
+    <div class="syntaxTitle"><b>SPACE SYNTAX ANALYSIS</b><span>GRAPH / EVC</span></div>
+    <div class="syntaxMeta">Adjacency Matrix A · Eigenvector Centrality v</div>
+    <div class="syntaxRows" id="syntaxRows"></div>
+    <div class="syntaxFormula">Route score = 0.55·EVC + 0.30·visibility + 0.15·capacity</div>
+  </div>
   <button class="runAI" id="runAI">RUN AI ANALYSIS</button>
   <button class="applyAI" id="applyAI">APPLY OPTIMIZED ROUTE &amp; PLAY</button>
 </section><div class="rhead"><h3>AI 혼잡도 분석</h3><span class="time">12:30~13:00 예측</span></div>
@@ -302,167 +331,170 @@ const oldBtn=$("old"), aiBtn=$("ai"), pathOld=$("pathOld"), pathAi=$("pathAi");
 const floorTitle=$("floorTitle"), badge=$("badge"), gauge=$("gauge"), stair=$("stair");
 const play=$("play"), reset=$("reset"), timeline=$("timeline"), clock=$("clock"), status=$("status");
 const studentVal=$("studentVal"), students=$("students");
+const heatmapValues={
+ A:.22,B:.30,C:.35,D:.42,E:.49,F:.56,G:.58,H:.66,I:.72,J:.61,K:.54,L:.47,
+ CORRIDOR:.86,WEST:.18,CENTRAL:.94
+};
 
+// Space syntax graph: rooms/corridor/stairs as nodes, doors as edges.
+const nodes=["A","B","C","D","E","F","G","H","I","J","K","L","CORRIDOR","WEST","CENTRAL"];
+const edges=[
+ ["A","B"],["A","C"],["B","D"],["C","D"],["C","E"],["D","F"],["E","F"],
+ ["B","CORRIDOR"],["D","CORRIDOR"],["F","CORRIDOR"],
+ ["G","CORRIDOR"],["H","CORRIDOR"],["I","CORRIDOR"],["J","CORRIDOR"],["K","CORRIDOR"],["L","CORRIDOR"],
+ ["G","H"],["G","I"],["H","J"],["I","J"],["I","K"],["J","L"],["K","L"],
+ ["WEST","CORRIDOR"],["CENTRAL","CORRIDOR"]
+];
+function adjacencyMatrix(){
+ const n=nodes.length, idx=Object.fromEntries(nodes.map((x,i)=>[x,i]));
+ const A=Array.from({length:n},()=>Array(n).fill(0));
+ edges.forEach(([a,b])=>{A[idx[a]][idx[b]]=1;A[idx[b]][idx[a]]=1;});
+ return A;
+}
+// Power iteration extracts the dominant eigenvector of the adjacency matrix.
+function eigenvectorCentrality(A){
+ const n=A.length; let v=Array(n).fill(1/Math.sqrt(n));
+ for(let k=0;k<80;k++){
+   const w=v.map((_,i)=>A[i].reduce((s,a,j)=>s+a*v[j],0));
+   const norm=Math.sqrt(w.reduce((s,x)=>s+x*x,0))||1;
+   const nv=w.map(x=>x/norm);
+   const diff=nv.reduce((s,x,i)=>s+Math.abs(x-v[i]),0);
+   v=nv;if(diff<1e-9)break;
+ }
+ const max=Math.max(...v);
+ return Object.fromEntries(nodes.map((x,i)=>[x,v[i]/max]));
+}
+const EVC=eigenvectorCentrality(adjacencyMatrix());
+
+// Combine space-syntax accessibility with capacity/visibility and observed occupancy.
+// Lower route score is preferred; centrality is used to detect strategic bottlenecks.
+const scores={};
+nodes.forEach(n=>{
+ const occ=heatmapValues[n]??.5;
+ const visibility=n==="CORRIDOR"?.72:n==="CENTRAL"?.35:n==="WEST"?.92:.82;
+ const capacity=n==="CENTRAL"?.45:n==="WEST"?.86:n==="CORRIDOR"?.68:.78;
+ scores[n]=.55*EVC[n]+.30*(1-visibility)+.15*(1-capacity)+.35*occ;
+});
+function renderSyntax(){
+ const rows=$("syntaxRows"); if(!rows)return;
+ const top=nodes.map(n=>[n,EVC[n],scores[n]]).sort((a,b)=>b[1]-a[1]).slice(0,5);
+ rows.innerHTML=top.map(([n,e,sc])=>{
+   const label=n==="CORRIDOR"?"CORR":n;
+   return '<div class="syntaxRow"><span>'+label+'</span><span class="syntaxBar"><i style="width:'+Math.round(e*100)+'%"></i></span><b>'+e.toFixed(2)+'</b></div>';
+ }).join("");
+}
+function colorFor(v){
+ v=Math.max(0,Math.min(1,v));
+ // blue -> cyan -> yellow -> red, preserving the requested red/blue interpretation.
+ const stops=[[0,48,105,235],[.33,35,165,220],[.66,244,183,55],[1,220,45,45]];
+ let a=stops[0],b=stops[stops.length-1];
+ for(let i=0;i<stops.length-1;i++)if(v>=stops[i][0]&&v<=stops[i+1][0]){a=stops[i];b=stops[i+1];break;}
+ const f=(v-a[0])/(b[0]-a[0]);
+ const rgb=a.slice(1).map((x,i)=>Math.round(x+(b[i+1]-x)*f));
+ return "rgb("+rgb.join(",")+")";
+}
+function updateHeatmap(){
+ Object.entries(heatmapValues).forEach(([k,v])=>{
+   const el=$("hm"+(k==="CORRIDOR"?"Corridor":k==="WEST"?"West":k==="CENTRAL"?"Central":k));
+   if(el){el.style.fill=colorFor(v);el.style.fillOpacity=(.18+.42*v).toFixed(2);}
+ });
+}
 function setMode(next){
-  ai=!!next;
-  oldBtn.classList.toggle("on",!ai);
-  aiBtn.classList.toggle("on",ai);
-  badge.textContent=currentFloor+"F · SAMPLE BIM · "+(ai?"AI 최적화":"기존 동선");
-  gauge.textContent=ai?"38%":"62%";
-  stair.textContent=ai?"55%":"92%";
-  pathOld.style.display=ai?"none":"block";
-  pathAi.style.display=ai?"block":"none";
-  const zones=document.getElementById("congestionZones");
-  if(zones) zones.classList.remove("aiHidden");
-  document.body.classList.toggle("aiActive",ai);
-  const aiLabel=document.getElementById("aiModeLabel"); if(aiLabel) aiLabel.style.display=ai?"block":"none";
-  document.querySelectorAll(".moving").forEach(p=>p.setAttribute("fill",ai?"#20a66a":"#1976e8"));
+ ai=!!next;
+ oldBtn.classList.toggle("on",!ai); aiBtn.classList.toggle("on",ai);
+ badge.textContent=currentFloor+"F · SAMPLE BIM · "+(ai?"AI 최적화":"기존 동선");
+ gauge.textContent=ai?"38%":"62%"; stair.textContent=ai?"55%":"92%";
+ pathOld.style.display=ai?"none":"block"; pathAi.style.display=ai?"block":"none";
+ document.body.classList.toggle("aiActive",ai);
+ const label=$("aiModeLabel"); if(label)label.style.display=ai?"block":"none";
+ moving.forEach(g=>g.style.opacity="1");
+ updateHeatmap();
 }
 oldBtn.addEventListener("click",()=>setMode(false));
-aiBtn.addEventListener("click",()=>setMode(true));
+aiBtn.addEventListener("click",()=>{setMode(true);activateAITab();});
 
 document.querySelectorAll(".floors button").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".floors button").forEach(x=>x.classList.remove("on"));
-    btn.classList.add("on");
-    currentFloor=Number(btn.dataset.floor);
-    floorTitle.textContent=currentFloor+"층";
-    setMode(ai);
-    showNotice(currentFloor+"층 BIM 공간을 표시했습니다.");
-  });
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".floors button").forEach(x=>x.classList.remove("on"));
+  btn.classList.add("on"); currentFloor=Number(btn.dataset.floor);
+  floorTitle.textContent=currentFloor+"층"; setMode(ai);
+  showNotice(currentFloor+"F BIM SPACE LOADED");
+ });
 });
-
 document.querySelectorAll(".nav").forEach((btn,i)=>{
-  btn.addEventListener("click",()=>{
-    document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
-    btn.classList.add("active");
-    const labels=["홈","건물 개요","혼잡도 분석","동선 시뮬레이션","최적화 제안","설정"];
-    showNotice(labels[i]+" 메뉴가 선택되었습니다.");
-    if(i===2) document.querySelector(".right").scrollIntoView({behavior:"smooth",block:"start"});
-    if(i===3) document.querySelector(".viewer").scrollIntoView({behavior:"smooth",block:"center"});
-    if(i===4) setMode(true);
-  });
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+  if(i===2){activateAITab();$("bimViewport").scrollIntoView({behavior:"smooth",block:"center"});}
+  if(i===3)$("bimViewport").scrollIntoView({behavior:"smooth",block:"center"});
+  if(i===4)activateAITab();
+ });
 });
-
-students.addEventListener("input",e=>{
-  studentVal.textContent=Number(e.target.value).toLocaleString()+"명";
-  updatePeople(Number(e.target.value));
-});
-
-play.addEventListener("click",()=>{
-  playing=!playing;
-  play.textContent=playing?"❚❚ 일시정지":"▶ 재생";
-  status.textContent=playing?"자동 반복 재생":"일시정지";
-});
-reset.addEventListener("click",()=>{
-  t=0; playing=true;
-  play.textContent="❚❚ 일시정지"; status.textContent="처음부터 재생";
-});
-timeline.addEventListener("input",e=>{
-  t=Number(e.target.value); playing=false;
-  play.textContent="▶ 재생"; status.textContent="원하는 시간으로 이동";
-});
+students.addEventListener("input",e=>{studentVal.textContent=Number(e.target.value).toLocaleString()+"명";buildPeople();});
+play.addEventListener("click",()=>{playing=!playing;play.textContent=playing?"❚❚ 일시정지":"▶ 재생";status.textContent=playing?"자동 반복 재생":"일시정지";});
+reset.addEventListener("click",()=>{t=0;playing=true;play.textContent="❚❚ 일시정지";status.textContent="처음부터 재생";});
+timeline.addEventListener("input",e=>{t=Number(e.target.value);playing=false;play.textContent="▶ 재생";status.textContent="원하는 시간으로 이동";});
 
 function showNotice(msg){
-  let n=$("notice");
-  if(!n){
-    n=document.createElement("div"); n.id="notice";
-    n.style.cssText="position:fixed;right:24px;bottom:24px;background:#17324d;color:white;padding:10px 14px;border-radius:8px;font-size:11px;z-index:9999;box-shadow:0 8px 25px #0003";
-    document.body.appendChild(n);
-  }
-  n.textContent=msg; n.style.opacity="1";
-  clearTimeout(window.__noticeTimer);
-  window.__noticeTimer=setTimeout(()=>n.style.opacity="0",1400);
+ let n=$("notice");
+ if(!n){n=document.createElement("div");n.id="notice";n.style.cssText="position:fixed;right:24px;bottom:24px;background:#202529;color:#fff;padding:9px 13px;border:1px solid #657077;border-left:3px solid #d9902f;font:9px Consolas,monospace;z-index:9999;";document.body.appendChild(n);}
+ n.textContent=msg;n.style.opacity="1";clearTimeout(window.__noticeTimer);window.__noticeTimer=setTimeout(()=>n.style.opacity="0",1800);
 }
 
-const basePeople=[
- [155,145],[180,150],[205,155],[230,160],[255,165],[280,170],[305,175],[330,180],
- [355,185],[380,190],[405,195],[430,200],[455,205],[480,210],[505,212],[530,214],
- [555,216],[580,218],[605,220],[630,222]
-];
-let peopleLayer=document.querySelector("svg .people");
-let moving=[];
-function buildPeople(){
-  if(!peopleLayer)return;
-  peopleLayer.innerHTML="";
-  moving=[];
-  const count=Math.min(18,Math.max(6,Math.round(Number(students.value)/75)));
-  for(let i=0;i<count;i++){
-    const g=document.createElementNS("http://www.w3.org/2000/svg","g");
-    g.setAttribute("class","moving person");
-    const shadow=document.createElementNS("http://www.w3.org/2000/svg","ellipse");
-    shadow.setAttribute("class","personShadow"); shadow.setAttribute("cx","0"); shadow.setAttribute("cy","15"); shadow.setAttribute("rx","7"); shadow.setAttribute("ry","2.5");
-    const head=document.createElementNS("http://www.w3.org/2000/svg","circle");
-    head.setAttribute("class","personHead"); head.setAttribute("cx","0"); head.setAttribute("cy","-7"); head.setAttribute("r","3.1");
-    const body=document.createElementNS("http://www.w3.org/2000/svg","path");
-    body.setAttribute("class","personBody"); body.setAttribute("d","M0 -3 L0 7");
-    const arms=document.createElementNS("http://www.w3.org/2000/svg","path");
-    arms.setAttribute("class","personArms"); arms.setAttribute("d","M-5 0 L0 2 L5 0");
-    const legs=document.createElementNS("http://www.w3.org/2000/svg","path");
-    legs.setAttribute("class","personLegs"); legs.setAttribute("d","M0 7 L-4 14 M0 7 L4 14");
-    g.append(shadow,head,body,arms,legs);
-    peopleLayer.appendChild(g);
-    moving.push(g);
-  }
-}
-function updatePeople(){const aiTab=document.getElementById("aiTab"), dockAiTab=document.getElementById("dockAiTab"), propTab=document.getElementById("propTab"), aiDock=document.getElementById("aiDock");
-const runAI=document.getElementById("runAI"), applyAI=document.getElementById("applyAI"), scanBar=document.getElementById("scanBar"), scanPct=document.getElementById("scanPct"), scanText=document.getElementById("scanText"), engineState=document.getElementById("engineState"), aiCost=document.getElementById("aiCost");
+const aiTab=$("aiTab"),dockAiTab=$("dockAiTab"),propTab=$("propTab"),aiDock=$("aiDock");
+const runAI=$("runAI"),applyAI=$("applyAI"),scanBar=$("scanBar"),scanPct=$("scanPct"),scanText=$("scanText"),engineState=$("engineState"),aiCost=$("aiCost");
 function activateAITab(){
-  document.querySelectorAll(".ribbonTab").forEach(x=>x.classList.remove("active")); aiTab.classList.add("active");
-  aiDock.classList.add("show"); propTab.classList.remove("active"); dockAiTab.classList.add("active");
-  setMode(true); startAIScan();
+ document.querySelectorAll(".ribbonTab").forEach(x=>x.classList.remove("active"));aiTab.classList.add("active");
+ aiDock.classList.add("show");propTab.classList.remove("active");dockAiTab.classList.add("active");
+ setMode(true);renderSyntax();startAIScan();
 }
 function startAIScan(){
-  let p=0; engineState.textContent="SCANNING"; scanText.textContent="Reading BIM geometry / spaces / egress nodes"; scanBar.style.width="0%"; scanPct.textContent="0%";
-  clearInterval(window.__scan);
-  window.__scan=setInterval(()=>{
-    p+=10; scanBar.style.width=p+"%"; scanPct.textContent=p+"%";
-    if(p===30) scanText.textContent="Detecting corridor bottlenecks / stair capacity";
-    if(p===60) scanText.textContent="Evaluating 1,200 occupant flow scenarios";
-    if(p===90) scanText.textContent="Computing least-conflict route";
-    if(p>=100){clearInterval(window.__scan);engineState.textContent="ANALYSIS COMPLETE";scanText.textContent="Level 02 optimized route generated";aiCost.textContent="0.72×";}
-  },120);
+ let p=0;engineState.textContent="SCANNING";scanText.textContent="Reading BIM geometry + adjacency graph";scanBar.style.width="0%";scanPct.textContent="0%";clearInterval(window.__scan);
+ window.__scan=setInterval(()=>{
+  p+=10;scanBar.style.width=p+"%";scanPct.textContent=p+"%";
+  if(p===20)scanText.textContent="Building adjacency matrix A";
+  if(p===40)scanText.textContent="Solving dominant eigenvector / EVC";
+  if(p===60)scanText.textContent="Mapping occupancy + visibility heatmap";
+  if(p===80)scanText.textContent="Testing alternate egress paths";
+  if(p>=100){clearInterval(window.__scan);engineState.textContent="ANALYSIS COMPLETE";scanText.textContent="Space-syntax optimized route generated";aiCost.textContent="0.72×";$("aiPeak").textContent="92% → 55%";renderSyntax();}
+ },130);
 }
-aiTab.addEventListener("click",activateAITab);
-dockAiTab.addEventListener("click",activateAITab);
+aiTab.addEventListener("click",activateAITab);dockAiTab.addEventListener("click",activateAITab);
 propTab.addEventListener("click",()=>{dockAiTab.classList.remove("active");propTab.classList.add("active");aiDock.classList.remove("show");});
 runAI.addEventListener("click",startAIScan);
-applyAI.addEventListener("click",()=>{setMode(true);playing=true;play.textContent="❚❚ 일시정지";status.textContent="AI OPTIMIZED FLOW · PLAYING";showNotice("AI 최적화 동선이 BIM 시뮬레이션에 적용되었습니다.");});
-document.querySelectorAll(".ribbonTab:not(#aiTab)").forEach(btn=>btn.addEventListener("click",()=>{document.querySelectorAll(".ribbonTab").forEach(x=>x.classList.remove("active"));btn.classList.add("active");}));
-buildPeople();}
-function routePoint(p, optimized){
-  if(!optimized){
-    const pts=[[150,130],[280,160],[458,225],[600,285],[730,340],[852,420]];
-    const q=p*(pts.length-1), i=Math.min(pts.length-2,Math.floor(q)), f=q-i;
-    return [pts[i][0]+(pts[i+1][0]-pts[i][0])*f,pts[i][1]+(pts[i+1][1]-pts[i][1])*f];
-  }
-  const pts=[[150,130],[280,160],[458,225],[370,300],[260,355],[140,420]];
-  const q=p*(pts.length-1), i=Math.min(pts.length-2,Math.floor(q)), f=q-i;
-  return [pts[i][0]+(pts[i+1][0]-pts[i][0])*f,pts[i][1]+(pts[i+1][1]-pts[i][1])*f];
+applyAI.addEventListener("click",()=>{setMode(true);playing=true;play.textContent="❚❚ 일시정지";status.textContent="AI OPTIMIZED FLOW · PLAYING";showNotice("SPACE SYNTAX + EVC ROUTE APPLIED");});
+
+function buildPeople(){
+ const layer=document.querySelector("svg .people");if(!layer)return;layer.innerHTML="";moving=[];
+ const count=Math.min(26,Math.max(8,Math.round(Number(students.value)/60)));
+ for(let i=0;i<count;i++){
+  const g=document.createElementNS("http://www.w3.org/2000/svg","g");g.setAttribute("class","moving person");
+  const sh=document.createElementNS("http://www.w3.org/2000/svg","ellipse");sh.setAttribute("class","personShadow");sh.setAttribute("cx","0");sh.setAttribute("cy","15");sh.setAttribute("rx","7");sh.setAttribute("ry","2.5");
+  const h=document.createElementNS("http://www.w3.org/2000/svg","circle");h.setAttribute("class","personHead");h.setAttribute("cx","0");h.setAttribute("cy","-7");h.setAttribute("r","3.1");
+  const b=document.createElementNS("http://www.w3.org/2000/svg","path");b.setAttribute("class","personBody");b.setAttribute("d","M0 -3 L0 7");
+  const a=document.createElementNS("http://www.w3.org/2000/svg","path");a.setAttribute("class","personArms");a.setAttribute("d","M-5 0 L0 2 L5 0");
+  const l=document.createElementNS("http://www.w3.org/2000/svg","path");l.setAttribute("class","personLegs");l.setAttribute("d","M0 7 L-4 14 M0 7 L4 14");
+  g.append(sh,h,b,a,l);layer.appendChild(g);moving.push(g);
+ }
+}
+function routePoint(p,opt){
+ const pts=opt?[[150,130],[280,160],[458,225],[370,300],[260,355],[140,420]]:[[150,130],[280,160],[458,225],[600,285],[730,340],[852,420]];
+ const q=p*(pts.length-1),i=Math.min(pts.length-2,Math.floor(q)),f=q-i;
+ return [pts[i][0]+(pts[i+1][0]-pts[i][0])*f,pts[i][1]+(pts[i+1][1]-pts[i][1])*f];
 }
 function animatePeople(){
-  const phase=t/20;
-  moving.forEach((g,i)=>{
-    const p=(phase+i/moving.length)%1;
-    const pt=routePoint(p,ai);
-    const bob=Math.sin((t*6)+i)*2;
-    g.setAttribute("transform","translate("+pt[0]+" "+(pt[1]+bob)+")");
-    g.querySelector(".personBody").setAttribute("stroke",ai?"#5fa889":"#d9902f");
-    g.querySelector(".personArms").setAttribute("stroke",ai?"#5fa889":"#d9902f");
-    g.querySelector(".personLegs").setAttribute("stroke",ai?"#5fa889":"#d9902f");
-    g.querySelector(".personHead").setAttribute("fill",ai?"#9a6f52":"#9a6f52");
-  });
+ const phase=t/20;
+ moving.forEach((g,i)=>{
+  const p=(phase+i/moving.length)%1,pt=routePoint(p,ai),bob=Math.sin(t*6+i)*2;
+  g.setAttribute("transform","translate("+pt[0]+" "+(pt[1]+bob)+")");
+  const col=ai?"#55b98a":"#e2a23a";
+  ["personBody","personArms","personLegs"].forEach(cls=>g.querySelector("."+cls).setAttribute("stroke",col));
+  g.querySelector(".personHead").setAttribute("fill","#9a6f52");
+ });
 }
 function loop(now){
-  const dt=Math.min(.05,(now-last)/1000); last=now;
-  if(playing){t+=dt;if(t>20)t=0;}
-  timeline.value=t;
-  clock.textContent="00:"+String(Math.floor(t)).padStart(2,"0")+" / 00:20";
-  animatePeople();
-  requestAnimationFrame(loop);
+ const dt=Math.min(.05,(now-last)/1000);last=now;if(playing){t+=dt;if(t>20)t=0;}
+ timeline.value=t;clock.textContent="00:"+String(Math.floor(t)).padStart(2,"0")+" / 00:20";animatePeople();requestAnimationFrame(loop);
 }
-buildPeople();
-setMode(false);
-requestAnimationFrame(loop);
+renderSyntax();updateHeatmap();buildPeople();setMode(false);requestAnimationFrame(loop);
 })();
 </script></body></html>
