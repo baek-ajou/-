@@ -88,5 +88,7 @@ function setMode(v){optimized=v;$("#normalBtn").classList.toggle("active",!v);$(
 $("#normalBtn").onclick=()=>setMode(false);$("#optBtn").onclick=()=>setMode(true);$("#studentSlider").oninput=()=>{const n=+$("#studentSlider").value;$("#studentCount").textContent=n.toLocaleString()+"명";renderPeople()};
 document.querySelectorAll(".floor").forEach((b,i)=>b.onclick=()=>{document.querySelectorAll(".floor").forEach(x=>x.classList.remove("active"));b.classList.add("active");$("#floorTitle").textContent=(i+1)+"층";});
 renderPeople();
+// 3D simulation hook
+const simCanvas=document.getElementById('sim3d');
 </script>
 </body></html>
