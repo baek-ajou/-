@@ -1,0 +1,55 @@
+{
+  "project": "Smart School Flow Sample BIM",
+  "format": "BIM JSON",
+  "building": "OO고등학교",
+  "floors": 5,
+  "spaces": [
+    "1F Lobby",
+    "1F Cafeteria",
+    "1F Administration",
+    "1F Library",
+    "2F Central Corridor",
+    "2F Classroom A",
+    "2F Classroom B",
+    "2F Science Lab",
+    "2F West Stair",
+    "2F Central Stair",
+    "3F Classroom A",
+    "3F Classroom B",
+    "3F Library",
+    "3F Central Stair",
+    "3F West Stair",
+    "4F Classroom A",
+    "4F Classroom B",
+    "4F Computer Lab",
+    "4F Central Stair",
+    "4F West Stair",
+    "5F Classroom A",
+    "5F Classroom B",
+    "5F Auditorium",
+    "5F Central Stair"
+  ],
+  "levels": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "analysis": {
+    "studentCount": 1200,
+    "peakTime": "12:30-13:00",
+    "congestion": {
+      "overall": 62,
+      "centralStair": 92,
+      "centralCorridor": 81,
+      "lobby": 76
+    },
+    "optimized": {
+      "overall": 38,
+      "centralStair": 55,
+      "westStairShare": "+35%",
+      "waitingTime": "-28%"
+    }
+  }
+}
