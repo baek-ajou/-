@@ -392,14 +392,15 @@ function buildPeople(){
     g.setAttribute("class","moving person");
     const shadow=document.createElementNS("http://www.w3.org/2000/svg","ellipse");
     shadow.setAttribute("class","personShadow"); shadow.setAttribute("cx","0"); shadow.setAttribute("cy","15"); shadow.setAttribute("rx","7"); shadow.setAttribute("ry","2.5");
-    const text=document.createElementNS("http://www.w3.org/2000/svg","text");
-    text.setAttribute("class","personIcon");
-    text.setAttribute("x","0"); text.setAttribute("y","9");
-    text.setAttribute("text-anchor","middle");
-    text.setAttribute("font-size","30");
-    text.setAttribute("font-family","Segoe UI Emoji, Apple Color Emoji, Noto Color Emoji, sans-serif");
-    text.textContent="🧍";
-    g.append(shadow,text);
+    const head=document.createElementNS("http://www.w3.org/2000/svg","circle");
+    head.setAttribute("class","personHead"); head.setAttribute("cx","0"); head.setAttribute("cy","-7"); head.setAttribute("r","3.1");
+    const body=document.createElementNS("http://www.w3.org/2000/svg","path");
+    body.setAttribute("class","personBody"); body.setAttribute("d","M0 -3 L0 7");
+    const arms=document.createElementNS("http://www.w3.org/2000/svg","path");
+    arms.setAttribute("class","personArms"); arms.setAttribute("d","M-5 0 L0 2 L5 0");
+    const legs=document.createElementNS("http://www.w3.org/2000/svg","path");
+    legs.setAttribute("class","personLegs"); legs.setAttribute("d","M0 7 L-4 14 M0 7 L4 14");
+    g.append(shadow,head,body,arms,legs);
     peopleLayer.appendChild(g);
     moving.push(g);
   }
@@ -446,9 +447,10 @@ function animatePeople(){
     const pt=routePoint(p,ai);
     const bob=Math.sin((t*6)+i)*2;
     g.setAttribute("transform","translate("+pt[0]+" "+(pt[1]+bob)+")");
-    const icon=g.querySelector(".personIcon");
-    icon.textContent="🧍";
-    icon.setAttribute("fill",ai?"#16845a":"#1976e8");
+    g.querySelector(".personBody").setAttribute("stroke",ai?"#5fa889":"#d9902f");
+    g.querySelector(".personArms").setAttribute("stroke",ai?"#5fa889":"#d9902f");
+    g.querySelector(".personLegs").setAttribute("stroke",ai?"#5fa889":"#d9902f");
+    g.querySelector(".personHead").setAttribute("fill",ai?"#9a6f52":"#9a6f52");
   });
 }
 function loop(now){
