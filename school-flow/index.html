@@ -30,6 +30,46 @@ body{background:#edf0f2;color:#202a33}
 .slider input{accent-color:#ef7d00}
 .legend{font-size:9px;color:#596770}
 .congestionZones{pointer-events:none}.zone{stroke:#d52b2b;stroke-width:2}.zoneHigh{fill:#e53935;fill-opacity:.16}.zoneMedium{fill:#f57c00;fill-opacity:.13;stroke:#e36d00}.zonePulse{fill:none;stroke:#e53935;stroke-width:2;stroke-dasharray:7 5;animation:zonePulse 1.4s ease-in-out infinite}.zoneTag rect{fill:#b3261e;stroke:#fff;stroke-width:1}.zoneTag text{fill:#fff;font-family:Arial,sans-serif;font-size:10px;font-weight:700}.zoneTag.orange rect{fill:#a94b00}.roomText text{fill:#4d5b65;font-family:Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:.6px}.roomText .corridorText{fill:#68757e;font-size:10px}.planLabel{font-family:Arial,sans-serif;font-size:8px;font-weight:700;letter-spacing:.5px}.stairText{fill:#4b5963}.cadNote{fill:#69757d;font-family:monospace;font-size:9px;letter-spacing:.7px}.oldPath{stroke:#d52b2b;stroke-width:4;stroke-dasharray:10 7;fill:none;opacity:.85}.aiPath{stroke:#198754;stroke-width:4;stroke-dasharray:10 7;fill:none}.people .personIcon{font-size:28px}.person{transition:transform .08s linear}
+/* NAVISWORKS-INSPIRED PROFESSIONAL SIMULATION UI */
+:root{--cad-bg:#30363b;--cad-panel:#252b2f;--cad-panel2:#1f2428;--cad-line:#4c555b;--cad-text:#d9dee2;--cad-muted:#9ca6ad;--accent:#f39a23;--danger:#e44b43;--success:#55b98a}
+html,body{background:#171b1e!important;color:var(--cad-text)!important}
+body{font-family:"Segoe UI",Arial,"Noto Sans KR",sans-serif!important}
+.app{max-width:1600px;margin:0 auto!important;border:1px solid #111!important;border-radius:0!important;box-shadow:0 14px 50px #0009!important;background:var(--cad-bg)!important}
+.head{height:92px!important;padding:0 18px!important;display:flex!important;align-items:flex-start!important;position:relative!important;background:#202529!important;border-bottom:1px solid #101315!important}
+.head:after{content:"HOME    INSERT    MODEL    ANALYZE    SIMULATION    VIEW    AI FLOW    SETTINGS";position:absolute;left:0;right:0;bottom:0;height:27px;padding:7px 18px;background:#292f33;color:#b9c1c6;font:10px "Segoe UI",Arial;letter-spacing:.35px;border-top:1px solid #3b4348;word-spacing:8px}
+.head .brand{height:64px;gap:9px}.brand .ico{width:34px;height:34px;border:1px solid #69747b!important;border-radius:2px!important;background:#30383d!important;font-size:16px!important}.head h1{font-size:17px!important;letter-spacing:.3px}.head p{font-size:9px!important;color:#9da8ae!important}.slogan{font-size:10px!important;color:#aeb7bc!important;margin-top:17px}
+.layout{grid-template-columns:178px 1fr 290px!important;min-height:900px!important}
+.side{background:#242a2e!important;border-right:1px solid #454d52!important;padding:10px 8px!important}
+.nav{color:#aeb7bd!important;border-radius:2px!important;padding:9px 10px!important;font-size:10px!important;font-weight:500!important}.nav:hover{background:#32393e!important;color:#fff!important}.nav.active{background:#3a4247!important;color:#fff!important;border-left:3px solid var(--accent)!important}
+.school{border-top:1px solid #454d52!important}.pic{background:#30373c!important;color:#c5cdd2!important}.school b{color:#dce1e4!important}.facts{color:#929da4!important}
+.main{padding:10px!important;background:#30363b!important}
+.title{margin-bottom:7px!important}.title h2{font-size:13px!important;color:#e1e5e8!important}.title h2 small{color:#8f9aa1!important}.floors button{background:#252b2f!important;border-color:#4b545a!important;color:#b8c0c5!important;border-radius:2px!important;padding:5px 9px!important}.floors .on{background:var(--accent)!important;border-color:var(--accent)!important;color:#171b1e!important;font-weight:700}
+.bimbar{background:#252b2f!important;border-color:#4b545a!important;color:#d4dadd!important;border-radius:2px!important;padding:8px 10px!important}.bimbar small,.meta{color:#8e999f!important}.meta b{color:#d7dde0!important}
+.toolbar{height:32px!important;margin:5px 0!important}.live{color:#63bd91!important;font-size:9px!important}.toggle{background:#252b2f!important;border:1px solid #4b545a!important;border-radius:2px!important}.toggle button{color:#aeb7bc!important;border-radius:1px!important}.toggle .on{background:#3a4247!important;color:#fff!important;box-shadow:none!important}
+.viewer{height:505px!important;border-radius:2px!important;border:1px solid #69747a!important;background:#555b60!important;box-shadow:inset 0 0 0 1px #202528, inset 0 0 70px #0005!important}
+/* dark technical viewport while retaining the top-down BIM geometry */
+.viewer svg{background:#555b60!important}
+.viewer svg>rect:first-of-type{fill:#555b60!important}
+.viewer svg>rect:nth-of-type(2){fill:#4a5055!important}
+.viewer svg>rect:nth-of-type(3){fill:#4a5055!important}
+.viewer svg [fill="#fff"]{fill:#697177!important}
+.viewer svg [fill="#f9fafb"]{fill:#3b4247!important}
+.viewer svg [fill="#eef1f3"]{fill:#454d52!important}
+.viewer svg [fill="#eef2f4"]{fill:#454d52!important}
+.viewer svg [stroke="#56636e"]{stroke:#aeb7bc!important}
+.viewer svg [stroke="#3f4b55"]{stroke:#c0c7cb!important}
+.viewer svg [stroke="#202a33"]{stroke:#e0e4e7!important}
+.viewer svg .roomText text{fill:#e0e5e8!important}
+.viewer svg .corridorText{fill:#b8c1c6!important}
+.viewer svg .stairText{fill:#d4dade!important}
+.viewer svg .cadNote{fill:#aeb7bd!important}
+.badge,.hint,.flow{background:#252b2ddd!important;border:1px solid #657077!important;color:#dce2e5!important;border-radius:2px!important}.flow{color:#dce2e5!important}.green{color:#69c79a!important}
+.controls{background:#252b2f!important;border-color:#4b545a!important;border-radius:0!important;padding:7px!important}.controls button{background:#30373c!important;border-color:#59636a!important;color:#cbd2d6!important;border-radius:2px!important}.controls .play{background:var(--accent)!important;color:#171b1e!important;border-color:var(--accent)!important}.controls input{accent-color:var(--accent)!important}
+.legend{background:#252b2f!important;color:#9da7ad!important;padding:6px!important;border-bottom:1px solid #4b545a}.slider{background:#252b2f!important;padding:7px!important;color:#9da7ad!important}.slider input{accent-color:var(--accent)!important}
+.bottom{margin-top:7px!important;grid-template-columns:1.2fr .8fr!important}.card{background:#252b2f!important;border-color:#4b545a!important;border-radius:2px!important;color:#d3d9dc!important}.ct{color:#dce2e5!important}.mini,.effect{background:#30373c!important;border-color:#4b545a!important;color:#c5cdd1!important}.arrow{color:var(--accent)!important}.effect b{color:var(--accent)!important}
+.right{background:#252b2f!important;border-left:1px solid #454d52!important;color:#d7dde0!important;padding:12px!important}.right h3{color:#e2e6e9!important}.time,.top div,.facts{color:#949fa6!important}.gauge{border-bottom-color:#454d52!important}.circle{background:conic-gradient(var(--accent) 0 62%,#454d52 62%)!important}.inner{background:#252b2f!important}.inner b{color:#fff!important}.inner small{color:#949fa6!important}.top h4{color:#dce2e5!important}.top div{border-bottom-color:#3b4449!important}.red{color:#ef6a62!important}.chart{border-bottom-color:#454d52!important}.insight{background:#30373c!important;color:#cbd2d6!important}.insight b{color:#f2a34b!important}.rec{border-bottom-color:#3b4449!important;color:#c6cdd1!important}.num{background:var(--accent)!important;color:#202427!important}
+.zoneHigh{fill:#e44b43!important;fill-opacity:.28!important}.zoneMedium{fill:#e9822b!important;fill-opacity:.20!important}.zoneTag rect{fill:#a8322d!important}.zoneTag.orange rect{fill:#9a531d!important}.oldPath{stroke:#ef5a52!important}.aiPath{stroke:#55b98a!important}
+@media(max-width:1100px){.layout{grid-template-columns:150px 1fr!important}.right{grid-column:1/-1}}
 </style></head>
 <body><div class="app">
 <header class="head"><div class="brand"><div class="ico">🏫</div><div><h1>Smart School Flow</h1><p>AI + BIM 기반 학교 공간 혼잡도 분석 및 최적화 서비스</p></div></div><div class="slogan">더 스마트한 동선, 더 쾌적한 학교</div></header>
