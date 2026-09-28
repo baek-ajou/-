@@ -325,7 +325,7 @@ html,body{background:#111518!important}
 <script>
 (function(){
 "use strict";
-let ai=false, playing=true, t=0, last=performance.now(), currentFloor=2;
+let ai=false, playing=true, t=0, last=performance.now(), currentFloor=2, moving=[];
 const $=id=>document.getElementById(id);
 const oldBtn=$("old"), aiBtn=$("ai"), pathOld=$("pathOld"), pathAi=$("pathAi");
 const floorTitle=$("floorTitle"), badge=$("badge"), gauge=$("gauge"), stair=$("stair");
